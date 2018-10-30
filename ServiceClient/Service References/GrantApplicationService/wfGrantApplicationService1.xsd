@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/JobApplicationService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/JobApplicationService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:44065/wfGrantApplicationService.xamlx?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="GrantApplication">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplyingGrantee" nillable="true" type="tns:Grantee" />
+      <xs:element minOccurs="0" name="GrantTypeId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrgId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GrantApplication" nillable="true" type="tns:GrantApplication" />
+  <xs:complexType name="Grantee">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GranteeId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrgName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Grantee" nillable="true" type="tns:Grantee" />
+  <xs:complexType name="GrantApplicationStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GrantApplicationId" type="ser:guid" />
+      <xs:element minOccurs="0" name="GrantTypeAppliedFor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PassedReview" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PassedRiskAssessment" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SubmittedApplication" nillable="true" type="tns:GrantApplication" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GrantApplicationStatus" nillable="true" type="tns:GrantApplicationStatus" />
+</xs:schema>

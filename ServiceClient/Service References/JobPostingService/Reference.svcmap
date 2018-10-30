@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="986a4fc3-5d55-4c6a-9572-8069281cb969" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:44065/wfJobApplicationService.xamlx" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wfJobApplicationService.xsd" MetadataType="Schema" ID="e83d5d8e-a6ea-44a6-b174-71afc94095fd" SourceId="1" SourceUrl="http://localhost:44065/wfJobApplicationService.xamlx?xsd=xsd2" />
+    <MetadataFile FileName="wfJobApplicationService.disco" MetadataType="Disco" ID="71753ee0-79be-415c-8ce8-689a72f79d59" SourceId="1" SourceUrl="http://localhost:44065/wfJobApplicationService.xamlx?disco" />
+    <MetadataFile FileName="wfJobApplicationService.wsdl" MetadataType="Wsdl" ID="10988b89-9b10-458f-a7f1-339d48cba806" SourceId="1" SourceUrl="http://localhost:44065/wfJobApplicationService.xamlx?wsdl" />
+    <MetadataFile FileName="wfJobApplicationService1.xsd" MetadataType="Schema" ID="9539412d-02cb-40fb-99d3-4b97f26e370d" SourceId="1" SourceUrl="http://localhost:44065/wfJobApplicationService.xamlx?xsd=xsd0" />
+    <MetadataFile FileName="wfJobApplicationService2.xsd" MetadataType="Schema" ID="8b8f3387-53b6-482e-973d-d7aafe49f49f" SourceId="1" SourceUrl="http://localhost:44065/wfJobApplicationService.xamlx?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

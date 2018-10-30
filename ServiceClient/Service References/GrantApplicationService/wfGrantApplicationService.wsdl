@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="wfGrantApplicationService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:44065/wfGrantApplicationService.xamlx?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:44065/wfGrantApplicationService.xamlx?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:44065/wfGrantApplicationService.xamlx?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/JobApplicationService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IGrantApplicationService_ReviewApplication_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReviewApplication" />
+  </wsdl:message>
+  <wsdl:message name="IGrantApplicationService_ApplyForGrant_InputMessage">
+    <wsdl:part name="parameters" element="tns:ApplyForGrant" />
+  </wsdl:message>
+  <wsdl:message name="IGrantApplicationService_ApplyForGrant_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ApplyForGrantResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGrantApplicationService_TerminateJobApplication_InputMessage">
+    <wsdl:part xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/" name="guid" element="q1:guid" />
+  </wsdl:message>
+  <wsdl:message name="IGrantApplicationService_GetGrantApplicationStatus_InputMessage">
+    <wsdl:part xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/" name="guid" element="q2:guid" />
+  </wsdl:message>
+  <wsdl:message name="IGrantApplicationService_GetGrantApplicationStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGrantApplicationStatusResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IGrantApplicationService">
+    <wsdl:operation name="ReviewApplication">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGrantApplicationService/ReviewApplication" message="tns:IGrantApplicationService_ReviewApplication_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ApplyForGrant">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGrantApplicationService/ApplyForGrant" message="tns:IGrantApplicationService_ApplyForGrant_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGrantApplicationService/ApplyForGrantResponse" message="tns:IGrantApplicationService_ApplyForGrant_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TerminateJobApplication">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGrantApplicationService/TerminateJobApplication" message="tns:IGrantApplicationService_TerminateJobApplication_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGrantApplicationStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGrantApplicationService/GetGrantApplicationStatus" message="tns:IGrantApplicationService_GetGrantApplicationStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGrantApplicationService/GetGrantApplicationStatusResponse" message="tns:IGrantApplicationService_GetGrantApplicationStatus_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IGrantApplicationService" type="tns:IGrantApplicationService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReviewApplication">
+      <soap:operation soapAction="http://tempuri.org/IGrantApplicationService/ReviewApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ApplyForGrant">
+      <soap:operation soapAction="http://tempuri.org/IGrantApplicationService/ApplyForGrant" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TerminateJobApplication">
+      <soap:operation soapAction="http://tempuri.org/IGrantApplicationService/TerminateJobApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetGrantApplicationStatus">
+      <soap:operation soapAction="http://tempuri.org/IGrantApplicationService/GetGrantApplicationStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wfGrantApplicationService">
+    <wsdl:port name="BasicHttpBinding_IGrantApplicationService" binding="tns:BasicHttpBinding_IGrantApplicationService">
+      <soap:address location="http://localhost:44065/wfGrantApplicationService.xamlx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
