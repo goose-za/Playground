@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceClient", "ServiceCli
 		{5EC301B2-7120-4BBA-AECB-2D93F55469C9} = {5EC301B2-7120-4BBA-AECB-2D93F55469C9}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBAdmin", "SBAdmin\SBAdmin.csproj", "{E81F155A-52D9-4C2D-B54C-90D12EAC6C17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{E6EC6EF7-2200-4AF1-B3BB-E47AD2392A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6EC6EF7-2200-4AF1-B3BB-E47AD2392A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6EC6EF7-2200-4AF1-B3BB-E47AD2392A40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E81F155A-52D9-4C2D-B54C-90D12EAC6C17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E81F155A-52D9-4C2D-B54C-90D12EAC6C17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E81F155A-52D9-4C2D-B54C-90D12EAC6C17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E81F155A-52D9-4C2D-B54C-90D12EAC6C17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -60,6 +60,7 @@
         </p:Variable>
         <p:Variable x:TypeArguments="s:Guid" Name="varGrantApplicationId" />
         <p:Variable x:TypeArguments="x:Boolean" Default="False" Name="varWorkflowComplete" />
+        <p:Variable x:TypeArguments="x:String" Default="po@awdf.org" Name="varPOAddress" />
       </p:Parallel.Variables>
       <p:Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_1">
         <p:Flowchart.Variables>
@@ -73,8 +74,9 @@
             <p:Sequence sap2010:WorkflowViewState.IdRef="Sequence_9">
               <p:Sequence.Variables>
                 <p:Variable x:TypeArguments="CorrelationHandle" Name="__handle1" />
+                <p:Variable x:TypeArguments="x:String" Default="grantservice@awdf.org" Name="varFromAddress" />
               </p:Sequence.Variables>
-              <Receive x:Name="__ReferenceID0" CanCreateInstance="True" DisplayName="Receive Grant Application" sap2010:WorkflowViewState.IdRef="Receive_3" OperationName="ApplyForGrant" ServiceContractName="IGrantApplicationService">
+              <Receive x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="Receive a new grant application from the Grantee Portal." CanCreateInstance="True" DisplayName="Receive Grant Application" sap2010:WorkflowViewState.IdRef="Receive_3" OperationName="ApplyForGrant" ServiceContractName="IGrantApplicationService">
                 <Receive.CorrelationInitializers>
                   <RequestReplyCorrelationInitializer>
                     <RequestReplyCorrelationInitializer.CorrelationHandle>
@@ -90,7 +92,7 @@
                   </p:OutArgument>
                 </ReceiveParametersContent>
               </Receive>
-              <p:Assign DisplayName="Assign GrantApplicationId" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <p:Assign sap2010:Annotation.AnnotationText="Create a new GUID so that we can track this particular instance of the workflow." DisplayName="Assign GrantApplicationId" sap2010:WorkflowViewState.IdRef="Assign_4">
                 <p:Assign.To>
                   <p:OutArgument x:TypeArguments="s:Guid">
                     <mca:CSharpReference x:TypeArguments="s:Guid">varGrantApplicationStatus.GrantApplicationId</mca:CSharpReference>
@@ -102,7 +104,31 @@
                   </p:InArgument>
                 </p:Assign.Value>
               </p:Assign>
-              <SendReply Request="{x:Reference __ReferenceID0}" DisplayName="SendReplyToReceive" sap2010:WorkflowViewState.IdRef="SendReply_2">
+              <ja:SendMail sap2010:Annotation.AnnotationText="Mail grantee to let them know that we got their application." Body="&lt;h1&gt;Thank you for your submisssion.&lt;/h1&gt;&lt;p&gt;We have received your submission. Your grant application will be evaluated by our team and you will be notified of the outcome of you application.&lt;/p&gt;&lt;h2&gt;Kind regards&lt;/h2&gt;&lt;p&gt;&lt;em&gt;The Grants Team&lt;/em&gt;&lt;/p&gt;" DisplayName="Mail Grantee" sap2010:WorkflowViewState.IdRef="SendMail_1" Subject="Grant Application received">
+                <ja:SendMail.FromAddress>
+                  <p:InArgument x:TypeArguments="x:String">
+                    <mca:CSharpValue x:TypeArguments="x:String">varFromAddress</mca:CSharpValue>
+                  </p:InArgument>
+                </ja:SendMail.FromAddress>
+                <ja:SendMail.ToAddress>
+                  <p:InArgument x:TypeArguments="x:String">
+                    <mca:CSharpValue x:TypeArguments="x:String">varGrantApplicationStatus.SubmittedApplication.ApplyingGrantee.EmailAddress</mca:CSharpValue>
+                  </p:InArgument>
+                </ja:SendMail.ToAddress>
+              </ja:SendMail>
+              <ja:SendMail sap2010:Annotation.AnnotationText="Mail Program Officer to let them know that we got a new grant application." Body="&lt;h1&gt;New grant submission received&lt;/h1&gt;&lt;p&gt;The system has detected that you have received a new grant application. Please can you log into the Grants Administration Portal in order to begin processing the application.&lt;/p&gt;&lt;h2&gt;Best&lt;/h2&gt;&lt;p&gt;&lt;em&gt;The Grants System&lt;/em&gt;&lt;/p&gt;" DisplayName="Mail Program Officer" sap2010:WorkflowViewState.IdRef="SendMail_2" Subject="New grant submission received">
+                <ja:SendMail.FromAddress>
+                  <p:InArgument x:TypeArguments="x:String">
+                    <mca:CSharpValue x:TypeArguments="x:String">varFromAddress</mca:CSharpValue>
+                  </p:InArgument>
+                </ja:SendMail.FromAddress>
+                <ja:SendMail.ToAddress>
+                  <p:InArgument x:TypeArguments="x:String">
+                    <mca:CSharpValue x:TypeArguments="x:String">varPOAddress</mca:CSharpValue>
+                  </p:InArgument>
+                </ja:SendMail.ToAddress>
+              </ja:SendMail>
+              <SendReply Request="{x:Reference __ReferenceID0}" sap2010:Annotation.AnnotationText="Send the workflow GUID back to the Grantee Portal, so that it can save it to the DB so that we have a reference to the workflow." DisplayName="SendReplyToReceive" sap2010:WorkflowViewState.IdRef="SendReply_2">
                 <SendReply.CorrelationInitializers>
                   <QueryCorrelationInitializer>
                     <QueryCorrelationInitializer.CorrelationHandle>
@@ -399,21 +425,53 @@
         </p:Pick>
       </p:While>
     </p:Parallel>
-    <sads:DebugSymbol.Symbol>d3VDOlxVc2Vyc1x2ZXJublxEb2N1bWVudHNcVmlzdWFsIFN0dWRpbyAyMDE1XFByb2plY3RzXFBsYXlncm91bmRcSm9iQXBwbGljYXRpb25TZXJ2aWNlXHdmR3JhbnRBcHBsaWNhdGlvblNlcnZpY2UueGFtbHhKEQOTAxABATUFkQMSAQI6DTp3AQQ+OT5AAQNAB88CFQEx0AIHkAMRAQlIC4ABGAKxAYMBD5kBHAKjAZ0BFZ0BegKdAZUCF54CIgKVAaECG7gCKAF/gQIjigIuAXehARe3ASQBaLoBG9QBKAFQ2AEh2AGOAQFK3AEj7gEwATrxASf6ATIBMtQCCY8DEgEP0gIL0gJmAQpJDX8aArIBhAERmAEbAqQBnAJEnAJZApwBmAIdmAJ1ApYBogIdrQI7AogBrgIdtwIoAoABiAJQiAJuAX6EAimEAoEBAXiiARmvASABcLABGbYBKAFpuwEd0wEkAVHdASXmATABQucBJe0BNQE7+AFV+AFZATn0AS30AYcBATPVAgv1AhoBHvYCC44DGgEQTQ9cGQLfAV0PaBoC0AFpD34bArMBjwEXjwFyAqsBlQEXlQGEAQKlAaUCI6UCrAECjwGqAiOqAnMCiQG1Aku1Ak8ChwGxAiOxAn0CgQGsAR+sAaUBAXGzAR+zAZQBAWq+ASO+AZABAVLCASHIAT8BYMsBIdEBPwFY5AFT5AFXAUngASvgAYUBAUPqASvqAZIBATzXAg/zAhwBH/gCD4sDGQETjQMNjQODAQERWRVZkwEC5wFSGVJ0AuABZRVlXwLYAWAVYIUBAtEBexV7fQLJAW4ZbnQCtAHFASfFAbABAWLCAYwBwgGqAQFhzgEnzgGwAQFaywGMAcsBqgEBWdgCEesCGwEm7AIR8gIdASCDAxWDA3ABGYgDFYgDbgEUjQNfjQOAAQES4wIX4wJyASzoAhfoAnABJ+8CF+8CfgEh</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d3VDOlxVc2Vyc1x2ZXJublxEb2N1bWVudHNcVmlzdWFsIFN0dWRpbyAyMDE1XFByb2plY3RzXFBsYXlncm91bmRcSm9iQXBwbGljYXRpb25TZXJ2aWNlXHdmR3JhbnRBcHBsaWNhdGlvblNlcnZpY2UueGFtbHhWEQOtAxABATUFqwMSAQI6DTp3AQU+OT5AAQQ/OD9FAQNBB+kCFQE56gIHqgMRAQtJC5oBGALKAZ0BD7MBHAK6AbcBFbcBegKzAa8CF7gCIgKqAbsCG9ICKAKRAZsCI6QCLgKIAbsBF9EBJAF31AEb7gEoAVzyASHyAY4BAVX2ASOIAjABQ4sCJ5QCMgE67gIJqQMSARLsAgvsAmYBDEoNmQEaAssBngERsgEbArsBtgJEtgJZArIBsgIdsgJ1AqsBvAIdxwI7ApsByAId0QIoApIBogJQogJuApABngIpngKBAQKJAbwBGckBIAKAAcoBGdABKAF41QEd7QEkAV33ASWAAjABTIECJYcCNQFEkgJVkgJZAUKOAi2OAocBATvvAguPAxoBI5ADC6gDGgETTUBNVwLMAU8PXhkCrwJfD2oaApwCaw92HQKHAncPggEdAvIBgwEPmAEbAs0BqQEXqQFyAsMBrwEXrwGEAQK8Ab8CI78CrAECowHEAiPEAnMCnAHPAkvPAk8CmgHLAiPLAn0CkwHGAR/GAaUBAoEBzQEfzQGUAQF52AEj2AGQAQFe3AEh4gE/AW7lASHrAT8BZf4BU/4BVwFU+gEr+gGFAQFNhAIrhAKSAQFF8QIPjQMcASSSAw+lAxkBFqcDDacDgwEBFFsVW5MBArkCVBlUdAKwAmcVZ18CpgJiFWKFAQKdAm4VbmECkwJrggFrtQMCkgJrhgRrogQCkQJzFXOeAQKIAnoVemEC/gF3kAF31wMC/QF3sAR3zwQC/AF/FX9fAvMBlQEVlQF9AukBiAEZiAF0As4B3wEn3wGwAQFw3AGMAdwBqgEBb+gBJ+gBsAEBZ+UBjAHlAaoBAWbyAhGFAxsBLIYDEYwDHQElnQMVnQNwAR2iAxWiA24BF6cDX6cDgAEBFf0CF/0CcgEzggMXggNwAS2JAxeJA34BJg==</sads:DebugSymbol.Symbol>
   </p:Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="Receive_3" sap:VirtualizedContainerService.HintSize="286,106" />
-      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="286,73" />
-      <sap2010:ViewStateData Id="SendReply_2" sap:VirtualizedContainerService.HintSize="286,106" />
-      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="308,493">
+      <sap2010:ViewStateData Id="Receive_3" sap:VirtualizedContainerService.HintSize="286,160">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="286,150">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SendMail_1" sap:VirtualizedContainerService.HintSize="286,103">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SendMail_2" sap:VirtualizedContainerService.HintSize="286,126">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SendReply_2" sap:VirtualizedContainerService.HintSize="286,229">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="308,1056">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="200,117">
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="330,1215">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>

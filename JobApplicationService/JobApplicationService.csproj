@@ -59,7 +59,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\AwardGrant.cs" />
+    <Compile Include="Activities\ProvideFeedbackToOfficer.cs" />
     <Compile Include="Activities\ProvideFeedbackToGrantee.cs" />
+    <Compile Include="Activities\SendMail.cs" />
+    <Compile Include="Activities\WaitForResponse.cs" />
     <Compile Include="RiskAssessment.cs" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
