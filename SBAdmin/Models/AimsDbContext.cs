@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SBAdmin.Models;
+using System;
 using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -60,7 +61,19 @@ namespace SBAdmin.Models
         #region DbSets
 
         public virtual DbSet<GrantInfoSummary> GrantInfoSummaries { get; set; }
-        
+        public virtual DbSet<AccountingRecordsSummary> AccountingRecordsSummary { get; set; }
+        public virtual DbSet<BeneficiarySummary> BeneficiarySummary { get; set; }
+        public virtual DbSet<BoardSummary> BoardSummary { get; set; }
+        public virtual DbSet<CapacityNeedsSummary> CapacityNeedsSummary { get; set; }
+        public virtual DbSet<ExpectedChangesSummary> ExpectedChangesSummary { get; set; }
+        public virtual DbSet<FinancialInfoSummary> FinancialInfoSummary { get; set; }
+        public virtual DbSet<GrantRequestInfoSummary> GrantRequestInfoSummary { get; set; }
+        public virtual DbSet<InternalControlsSummary> InternalControlsSummary { get; set; }
+        public virtual DbSet<MandESummary> MandESummary { get; set; }
+        public virtual DbSet<ProjectSummary> ProjectSummary { get; set; }
+        public virtual DbSet<RiskAssessmentSummary> RiskAssessmentSummary { get; set; }
+        public virtual DbSet<StaffSummary> StaffSummary { get; set; }
+
         #endregion
     }
 

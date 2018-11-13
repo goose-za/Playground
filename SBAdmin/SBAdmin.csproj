@@ -118,9 +118,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountingRecordsSummary.cs" />
     <Compile Include="Models\AimsDbContext.cs" />
+    <Compile Include="Models\BeneficiarySummary.cs" />
+    <Compile Include="Models\BoardSummary.cs" />
+    <Compile Include="Models\CapacityNeedsSummary.cs" />
+    <Compile Include="Models\ExpectedChangesSummary.cs" />
+    <Compile Include="Models\FinancialInfoSummary.cs" />
     <Compile Include="Models\GrantInfoSummary.cs" />
+    <Compile Include="Models\GrantRequestInfoSummary.cs" />
+    <Compile Include="Models\GrantSummary.cs" />
     <Compile Include="Models\IDbContext.cs" />
+    <Compile Include="Models\InternalControlsSummary.cs" />
+    <Compile Include="Models\MandESummary.cs" />
+    <Compile Include="Models\ProjectSummary.cs" />
+    <Compile Include="Models\RiskAssessmentSummary.cs" />
+    <Compile Include="Models\StaffSummary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
