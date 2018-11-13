@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SBAdmin.Models.GrantInfoSummary>
+
+@{
+    ViewBag.Title = "Grant Summary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table table-bordered table-condensed table-hover, table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GrantId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Organisation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequestReason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectObjectives)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.GrantId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Organisation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequestReason)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjectObjectives)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.GrantId, @class="btn btn-primary" })
+        </td>
+    </tr>
+}
+
+</table>
