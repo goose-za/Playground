@@ -1,0 +1,123 @@
+﻿@model SBAdmin.Models.AccountingRecordsSummary
+
+@{
+    ViewBag.Title = "AccountingRecords";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AccountingRecords</h2>
+
+<div>
+    <h4>AccountingRecordsSummary</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cashbook)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cashbook)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PettyCashbook)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PettyCashbook)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpendituresFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpendituresFile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IncomingFundsFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncomingFundsFile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BankAccountFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BankAccountFile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FixedAssetRegister)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FixedAssetRegister)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PayrollRecords)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PayrollRecords)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GeneralLedgerNominalLedger)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GeneralLedgerNominalLedger)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountsPayablePurchaseLedger)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountsPayablePurchaseLedger)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountsReceivableSalesLedger)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountsReceivableSalesLedger)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdditionalAccountingRecords)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdditionalAccountingRecords)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinStatementsApproved)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinStatementsApproved)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FSADate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FSADate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GrantId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

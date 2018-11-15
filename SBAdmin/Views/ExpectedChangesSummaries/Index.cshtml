@@ -1,0 +1,112 @@
+﻿@model IEnumerable<SBAdmin.Models.ExpectedChangesSummary>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Outputs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VAWEliminated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RightsToBodilyIntegrity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccessNecessarySupport)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IncreasingSupportOfVAW)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LawsAndPoliciesToPreventAndRespondToVAW)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EconomicRightsAndJusticeForWomenProtected)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AwareOfLabourAndEconomicRights)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecogniseAfricanWomensEconomicContributions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PoliciesAndLawsToProtectWomensEconomicRights)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParticipationOfWomenSustained)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AwarenessOfGenderedChallenges)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParticipationInPolicyAndDecisionMakingProcesses)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LawsAndPoliciesForAfricanWomensPoliticalRights)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Outputs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VAWEliminated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RightsToBodilyIntegrity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccessNecessarySupport)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncreasingSupportOfVAW)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LawsAndPoliciesToPreventAndRespondToVAW)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EconomicRightsAndJusticeForWomenProtected)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AwareOfLabourAndEconomicRights)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecogniseAfricanWomensEconomicContributions)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PoliciesAndLawsToProtectWomensEconomicRights)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParticipationOfWomenSustained)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AwarenessOfGenderedChallenges)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParticipationInPolicyAndDecisionMakingProcesses)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LawsAndPoliciesForAfricanWomensPoliticalRights)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.GrantId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.GrantId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.GrantId })
+        </td>
+    </tr>
+}
+
+</table>

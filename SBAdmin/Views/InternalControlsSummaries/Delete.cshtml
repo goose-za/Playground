@@ -1,0 +1,361 @@
+﻿@model SBAdmin.Models.InternalControlsSummary
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>InternalControlsSummary</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpenditureAuthorisedUsingPaymentVoucher)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpenditureAuthorisedUsingPaymentVoucher)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvoicesCheckedAgainstOrders)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoicesCheckedAgainstOrders)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecordsOfOrdersPlace)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecordsOfOrdersPlace)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QualityAndQuantityChecked)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QualityAndQuantityChecked)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentsMadeAgainstOriginalInvoices)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentsMadeAgainstOriginalInvoices)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegularStockTakingUndertaken)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegularStockTakingUndertaken)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConditionsForChequesComplied)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConditionsForChequesComplied)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MultipeignatoriesOnBankMandate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MultipeignatoriesOnBankMandate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChequeExpenditureNoted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChequeExpenditureNoted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChequeStubsCompleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChequeStubsCompleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChequesSignedWithDocumentaryEvidence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChequesSignedWithDocumentaryEvidence)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PettyCashPaymentsHaveDocumentation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PettyCashPaymentsHaveDocumentation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SupportingDocumentationAuthorised)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SupportingDocumentationAuthorised)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClaimAmountsEntered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClaimAmountsEntered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentsNotedInPettyCashBook)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentsNotedInPettyCashBook)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ToppingUpWithdrawalsNotedInPettyCashBook)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToppingUpWithdrawalsNotedInPettyCashBook)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegularChecksOfPettyCashRecords)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegularChecksOfPettyCashRecords)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BankBccountsHeldInNameOfOrganisation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BankBccountsHeldInNameOfOrganisation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InstructionsToOpenCloseAccountsAuthorised)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InstructionsToOpenCloseAccountsAuthorised)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecureRecordsHeld)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecureRecordsHeld)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegularBankReconciliationsPerformed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegularBankReconciliationsPerformed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BankStatementsInspected)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BankStatementsInspected)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalaryLevelsAuthorised)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalaryLevelsAuthorised)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffEmployedUnderContract)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffEmployedUnderContract)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplianceWithStatutoryTaxRegulations)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplianceWithStatutoryTaxRegulations)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssetsCheckedRegularly)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssetsCheckedRegularly)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InsuranceCover)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InsuranceCover)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UseOfFixedAssetsReviewed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UseOfFixedAssetsReviewed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProduceFinancialStatements)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProduceFinancialStatements)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PeriodRecentStatements)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PeriodRecentStatements)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReceiversOfFinancialStatements)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceiversOfFinancialStatements)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnnualFinancialStatementsAudited)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnnualFinancialStatementsAudited)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastExternalAudit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastExternalAudit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastExternalAuditDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastExternalAuditDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinancialReportsForManagers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinancialReportsForManagers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ManagerReportFrequency)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManagerReportFrequency)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ManagerReportCoveragePeriod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManagerReportCoveragePeriod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ManagerReportCreator)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManagerReportCreator)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PeriodicReportsForDonors)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PeriodicReportsForDonors)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonorReportFrequency)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonorReportFrequency)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonorReportCreator)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonorReportCreator)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonorReportReceivers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonorReportReceivers)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,129 @@
+﻿@model SBAdmin.Models.AccountingRecordsSummary
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>AccountingRecordsSummary</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cashbook)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cashbook)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PettyCashbook)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PettyCashbook)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpendituresFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpendituresFile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IncomingFundsFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncomingFundsFile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BankAccountFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BankAccountFile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FixedAssetRegister)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FixedAssetRegister)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PayrollRecords)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PayrollRecords)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GeneralLedgerNominalLedger)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GeneralLedgerNominalLedger)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountsPayablePurchaseLedger)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountsPayablePurchaseLedger)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountsReceivableSalesLedger)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountsReceivableSalesLedger)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdditionalAccountingRecords)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdditionalAccountingRecords)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinStatementsApproved)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinStatementsApproved)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FSADate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FSADate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

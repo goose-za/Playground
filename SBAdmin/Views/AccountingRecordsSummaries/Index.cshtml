@@ -1,0 +1,106 @@
+﻿@model IEnumerable<SBAdmin.Models.AccountingRecordsSummary>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cashbook)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PettyCashbook)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpendituresFile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IncomingFundsFile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BankAccountFile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FixedAssetRegister)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PayrollRecords)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GeneralLedgerNominalLedger)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountsPayablePurchaseLedger)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountsReceivableSalesLedger)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdditionalAccountingRecords)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FinStatementsApproved)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FSADate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cashbook)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PettyCashbook)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpendituresFile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncomingFundsFile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BankAccountFile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FixedAssetRegister)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PayrollRecords)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GeneralLedgerNominalLedger)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountsPayablePurchaseLedger)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountsReceivableSalesLedger)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdditionalAccountingRecords)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FinStatementsApproved)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FSADate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.GrantId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.GrantId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.GrantId })
+        </td>
+    </tr>
+}
+
+</table>

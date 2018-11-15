@@ -1,0 +1,91 @@
+﻿@model SBAdmin.Models.ProjectSummary
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProjectSummary</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Organisation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Organisation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequestedAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequestedAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectDuration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectDuration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Theme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Theme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsAnonymousGrant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsAnonymousGrant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnnonymousReason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnnonymousReason)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GrantId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

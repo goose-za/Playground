@@ -1,0 +1,82 @@
+﻿@model IEnumerable<SBAdmin.Models.CapacityNeedsSummary>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SystemsDevelopment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GovernanceStrengthening)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrganisationalStepChange)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fundraising)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HRandStaffing)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FinancialManagement)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MonitoringLearningAndEvaluation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MarketingAndCommunication)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommunityOutreachAndNetworking)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SystemsDevelopment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GovernanceStrengthening)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrganisationalStepChange)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fundraising)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HRandStaffing)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FinancialManagement)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MonitoringLearningAndEvaluation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MarketingAndCommunication)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommunityOutreachAndNetworking)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.GrantId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.GrantId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.GrantId })
+        </td>
+    </tr>
+}
+
+</table>

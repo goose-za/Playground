@@ -1,0 +1,393 @@
+﻿@model SBAdmin.Models.BeneficiarySummary
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>BeneficiarySummary</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WomenAndGirlsInGeneral)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WomenAndGirlsInGeneral)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WomensRightsActivistsDefenders)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WomensRightsActivistsDefenders)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WomenEntrepreneursBusinessWomen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WomenEntrepreneursBusinessWomen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WomenLivingWithHIV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WomenLivingWithHIV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WomenWithDisabilities)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WomenWithDisabilities)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WomenSexWorkers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WomenSexWorkers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IndigenousEthnicMinorityWomen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IndigenousEthnicMinorityWomen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LesbianBisexualTransgenderWomen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LesbianBisexualTransgenderWomen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Widows)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Widows)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrphansAndVulnerableGirls)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrphansAndVulnerableGirls)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OutOfSchoolGirls)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OutOfSchoolGirls)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MarginalisedRuralWomenAndGirls)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarginalisedRuralWomenAndGirls)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MarginalisedUrbanWomenAndGirls)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarginalisedUrbanWomenAndGirls)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WomenAndGirlRefugeesInternallyDisplacedAsylumSeekers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WomenAndGirlRefugeesInternallyDisplacedAsylumSeekers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WomenInTheArtsCreativeSectors)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WomenInTheArtsCreativeSectors)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WomenInPoliticsAndDecisionMaking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WomenInPoliticsAndDecisionMaking)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WomenInMedia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WomenInMedia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WomenTraditionalLeaders)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WomenTraditionalLeaders)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WomenInTechnology)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WomenInTechnology)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WomenInMiningAffectedCommunities)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WomenInMiningAffectedCommunities)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WomenInAgricultureFarming)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WomenInAgricultureFarming)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WomenGirlSurvivorsOfViolence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WomenGirlSurvivorsOfViolence)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalBeneficiaries)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalBeneficiaries)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GirlsAndAdolescentGirls)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GirlsAndAdolescentGirls)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YoungWomen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YoungWomen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Women)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Women)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BoysAndAdolescentBoys)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BoysAndAdolescentBoys)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YoungMen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YoungMen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Men)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Men)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransOrIntersexYouthOrAdults)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransOrIntersexYouthOrAdults)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalDirectBeneficiaries)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalDirectBeneficiaries)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CommunityBasedOrganisations)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommunityBasedOrganisations)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EducationProfessionals)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EducationProfessionals)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FaithBasedLeaders)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FaithBasedLeaders)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GovernmentOfficials)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GovernmentOfficials)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HealthProfessionals)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HealthProfessionals)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CivilSocietyOrganisations)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CivilSocietyOrganisations)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JournalistsMedia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JournalistsMedia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LegalOfficers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LegalOfficers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WomenAndOrGirls)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WomenAndOrGirls)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MenAndOrBoys)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenAndOrBoys)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Parliamentarians)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parliamentarians)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SocialWelfareWorkers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SocialWelfareWorkers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecuritySectorPersonnel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecuritySectorPersonnel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OthersSecondaryBeneficiaries)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OthersSecondaryBeneficiaries)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalSecondaryBeneficiaries)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalSecondaryBeneficiaries)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

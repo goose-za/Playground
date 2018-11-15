@@ -1,0 +1,43 @@
+﻿@model SBAdmin.Models.FinancialInfoSummary
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FinancialInfoSummary</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Year1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GrantId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

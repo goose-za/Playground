@@ -113,8 +113,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountingRecordsSummariesController.cs" />
+    <Compile Include="Controllers\BeneficiarySummariesController.cs" />
+    <Compile Include="Controllers\BoardSummariesController.cs" />
+    <Compile Include="Controllers\CapacityNeedsSummariesController.cs" />
+    <Compile Include="Controllers\ExpectedChangesSummariesController.cs" />
+    <Compile Include="Controllers\FinancialInfoSummariesController.cs" />
     <Compile Include="Controllers\FormsController.cs" />
+    <Compile Include="Controllers\GrantInfoSummariesController.cs" />
+    <Compile Include="Controllers\GrantRequestInfoSummariesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InternalControlsSummariesController.cs" />
+    <Compile Include="Controllers\MandESummariesController.cs" />
+    <Compile Include="Controllers\ProjectSummariesController.cs" />
+    <Compile Include="Controllers\RiskAssessmentSummariesController.cs" />
+    <Compile Include="Controllers\StaffSummariesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -158,6 +171,59 @@
     <Content Include="Views\Home\BSGrid.cshtml" />
     <Content Include="Views\Home\Blank.cshtml" />
     <Content Include="Views\Home\GrantSummary.cshtml" />
+    <Content Include="Views\Forms\sample.cshtml" />
+    <Content Include="Views\GrantInfoSummaries\Create.cshtml" />
+    <Content Include="Views\GrantInfoSummaries\Delete.cshtml" />
+    <Content Include="Views\GrantInfoSummaries\Details.cshtml" />
+    <Content Include="Views\GrantInfoSummaries\Edit.cshtml" />
+    <Content Include="Views\GrantInfoSummaries\Index.cshtml" />
+    <Content Include="Views\Home\StaffSummary.cshtml" />
+    <Content Include="Views\AccountingRecordsSummaries\Create.cshtml" />
+    <Content Include="Views\AccountingRecordsSummaries\Delete.cshtml" />
+    <Content Include="Views\AccountingRecordsSummaries\Details.cshtml" />
+    <Content Include="Views\AccountingRecordsSummaries\Edit.cshtml" />
+    <Content Include="Views\AccountingRecordsSummaries\Index.cshtml" />
+    <Content Include="Views\AccountingRecordsSummaries\AccountingRecords.cshtml" />
+    <Content Include="Views\BeneficiarySummaries\Create.cshtml" />
+    <Content Include="Views\BeneficiarySummaries\Delete.cshtml" />
+    <Content Include="Views\BeneficiarySummaries\Details.cshtml" />
+    <Content Include="Views\BeneficiarySummaries\Edit.cshtml" />
+    <Content Include="Views\BeneficiarySummaries\Index.cshtml" />
+    <Content Include="Views\BoardSummaries\Create.cshtml" />
+    <Content Include="Views\BoardSummaries\Delete.cshtml" />
+    <Content Include="Views\BoardSummaries\Details.cshtml" />
+    <Content Include="Views\BoardSummaries\Edit.cshtml" />
+    <Content Include="Views\BoardSummaries\Index.cshtml" />
+    <Content Include="Views\CapacityNeedsSummaries\Create.cshtml" />
+    <Content Include="Views\CapacityNeedsSummaries\Delete.cshtml" />
+    <Content Include="Views\CapacityNeedsSummaries\Details.cshtml" />
+    <Content Include="Views\CapacityNeedsSummaries\Edit.cshtml" />
+    <Content Include="Views\CapacityNeedsSummaries\Index.cshtml" />
+    <Content Include="Views\ExpectedChangesSummaries\Create.cshtml" />
+    <Content Include="Views\ExpectedChangesSummaries\Delete.cshtml" />
+    <Content Include="Views\ExpectedChangesSummaries\Details.cshtml" />
+    <Content Include="Views\ExpectedChangesSummaries\Edit.cshtml" />
+    <Content Include="Views\ExpectedChangesSummaries\Index.cshtml" />
+    <Content Include="Views\FinancialInfoSummaries\Create.cshtml" />
+    <Content Include="Views\FinancialInfoSummaries\Delete.cshtml" />
+    <Content Include="Views\FinancialInfoSummaries\Details.cshtml" />
+    <Content Include="Views\FinancialInfoSummaries\Edit.cshtml" />
+    <Content Include="Views\FinancialInfoSummaries\Index.cshtml" />
+    <Content Include="Views\GrantRequestInfoSummaries\Create.cshtml" />
+    <Content Include="Views\GrantRequestInfoSummaries\Delete.cshtml" />
+    <Content Include="Views\GrantRequestInfoSummaries\Details.cshtml" />
+    <Content Include="Views\GrantRequestInfoSummaries\Edit.cshtml" />
+    <Content Include="Views\GrantRequestInfoSummaries\Index.cshtml" />
+    <Content Include="Views\InternalControlsSummaries\Create.cshtml" />
+    <Content Include="Views\InternalControlsSummaries\Delete.cshtml" />
+    <Content Include="Views\InternalControlsSummaries\Details.cshtml" />
+    <Content Include="Views\InternalControlsSummaries\Edit.cshtml" />
+    <Content Include="Views\InternalControlsSummaries\Index.cshtml" />
+    <Content Include="Views\MandESummaries\Details.cshtml" />
+    <Content Include="Views\ProjectSummaries\Details.cshtml" />
+    <Content Include="Views\StaffSummaries\Details.cshtml" />
+    <Content Include="Views\RiskAssessmentSummaries\Details.cshtml" />
+    <Content Include="Views\StaffSummaries\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

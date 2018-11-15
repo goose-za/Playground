@@ -1,0 +1,59 @@
+﻿@model SBAdmin.Models.GrantRequestInfoSummary
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>GrantRequestInfoSummary</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RequestReason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequestReason)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectObjectives)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectObjectives)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectContributions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectContributions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Challenges)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Challenges)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activities)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activities)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GrantId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

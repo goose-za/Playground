@@ -1,0 +1,280 @@
+﻿@model IEnumerable<SBAdmin.Models.InternalControlsSummary>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpenditureAuthorisedUsingPaymentVoucher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InvoicesCheckedAgainstOrders)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecordsOfOrdersPlace)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QualityAndQuantityChecked)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentsMadeAgainstOriginalInvoices)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegularStockTakingUndertaken)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConditionsForChequesComplied)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MultipeignatoriesOnBankMandate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChequeExpenditureNoted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChequeStubsCompleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChequesSignedWithDocumentaryEvidence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PettyCashPaymentsHaveDocumentation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SupportingDocumentationAuthorised)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClaimAmountsEntered)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentsNotedInPettyCashBook)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToppingUpWithdrawalsNotedInPettyCashBook)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegularChecksOfPettyCashRecords)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BankBccountsHeldInNameOfOrganisation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstructionsToOpenCloseAccountsAuthorised)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecureRecordsHeld)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegularBankReconciliationsPerformed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BankStatementsInspected)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalaryLevelsAuthorised)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffEmployedUnderContract)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplianceWithStatutoryTaxRegulations)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssetsCheckedRegularly)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InsuranceCover)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UseOfFixedAssetsReviewed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProduceFinancialStatements)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PeriodRecentStatements)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReceiversOfFinancialStatements)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnnualFinancialStatementsAudited)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastExternalAudit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastExternalAuditDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FinancialReportsForManagers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ManagerReportFrequency)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ManagerReportCoveragePeriod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ManagerReportCreator)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PeriodicReportsForDonors)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DonorReportFrequency)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DonorReportCreator)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DonorReportReceivers)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpenditureAuthorisedUsingPaymentVoucher)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoicesCheckedAgainstOrders)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecordsOfOrdersPlace)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QualityAndQuantityChecked)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentsMadeAgainstOriginalInvoices)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegularStockTakingUndertaken)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConditionsForChequesComplied)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MultipeignatoriesOnBankMandate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChequeExpenditureNoted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChequeStubsCompleted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChequesSignedWithDocumentaryEvidence)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PettyCashPaymentsHaveDocumentation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SupportingDocumentationAuthorised)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClaimAmountsEntered)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentsNotedInPettyCashBook)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToppingUpWithdrawalsNotedInPettyCashBook)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegularChecksOfPettyCashRecords)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BankBccountsHeldInNameOfOrganisation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstructionsToOpenCloseAccountsAuthorised)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecureRecordsHeld)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegularBankReconciliationsPerformed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BankStatementsInspected)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalaryLevelsAuthorised)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StaffEmployedUnderContract)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplianceWithStatutoryTaxRegulations)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssetsCheckedRegularly)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InsuranceCover)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UseOfFixedAssetsReviewed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProduceFinancialStatements)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PeriodRecentStatements)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReceiversOfFinancialStatements)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnnualFinancialStatementsAudited)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastExternalAudit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastExternalAuditDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FinancialReportsForManagers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManagerReportFrequency)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManagerReportCoveragePeriod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManagerReportCreator)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PeriodicReportsForDonors)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonorReportFrequency)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonorReportCreator)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonorReportReceivers)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.GrantId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.GrantId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.GrantId })
+        </td>
+    </tr>
+}
+
+</table>

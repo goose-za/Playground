@@ -1,0 +1,304 @@
+﻿@model IEnumerable<SBAdmin.Models.BeneficiarySummary>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.WomenAndGirlsInGeneral)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WomensRightsActivistsDefenders)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WomenEntrepreneursBusinessWomen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WomenLivingWithHIV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WomenWithDisabilities)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WomenSexWorkers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IndigenousEthnicMinorityWomen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LesbianBisexualTransgenderWomen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Widows)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrphansAndVulnerableGirls)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OutOfSchoolGirls)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MarginalisedRuralWomenAndGirls)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MarginalisedUrbanWomenAndGirls)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WomenAndGirlRefugeesInternallyDisplacedAsylumSeekers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WomenInTheArtsCreativeSectors)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WomenInPoliticsAndDecisionMaking)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WomenInMedia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WomenTraditionalLeaders)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WomenInTechnology)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WomenInMiningAffectedCommunities)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WomenInAgricultureFarming)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WomenGirlSurvivorsOfViolence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalBeneficiaries)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GirlsAndAdolescentGirls)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YoungWomen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Women)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BoysAndAdolescentBoys)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YoungMen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Men)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransOrIntersexYouthOrAdults)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalDirectBeneficiaries)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommunityBasedOrganisations)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EducationProfessionals)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FaithBasedLeaders)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GovernmentOfficials)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HealthProfessionals)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CivilSocietyOrganisations)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JournalistsMedia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LegalOfficers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WomenAndOrGirls)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MenAndOrBoys)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parliamentarians)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SocialWelfareWorkers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecuritySectorPersonnel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OthersSecondaryBeneficiaries)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalSecondaryBeneficiaries)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.WomenAndGirlsInGeneral)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WomensRightsActivistsDefenders)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WomenEntrepreneursBusinessWomen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WomenLivingWithHIV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WomenWithDisabilities)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WomenSexWorkers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IndigenousEthnicMinorityWomen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LesbianBisexualTransgenderWomen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Widows)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrphansAndVulnerableGirls)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OutOfSchoolGirls)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MarginalisedRuralWomenAndGirls)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MarginalisedUrbanWomenAndGirls)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WomenAndGirlRefugeesInternallyDisplacedAsylumSeekers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WomenInTheArtsCreativeSectors)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WomenInPoliticsAndDecisionMaking)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WomenInMedia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WomenTraditionalLeaders)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WomenInTechnology)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WomenInMiningAffectedCommunities)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WomenInAgricultureFarming)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WomenGirlSurvivorsOfViolence)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalBeneficiaries)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GirlsAndAdolescentGirls)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YoungWomen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Women)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BoysAndAdolescentBoys)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YoungMen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Men)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransOrIntersexYouthOrAdults)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalDirectBeneficiaries)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommunityBasedOrganisations)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EducationProfessionals)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FaithBasedLeaders)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GovernmentOfficials)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HealthProfessionals)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CivilSocietyOrganisations)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JournalistsMedia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LegalOfficers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WomenAndOrGirls)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MenAndOrBoys)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parliamentarians)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SocialWelfareWorkers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecuritySectorPersonnel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OthersSecondaryBeneficiaries)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalSecondaryBeneficiaries)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.GrantId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.GrantId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.GrantId })
+        </td>
+    </tr>
+}
+
+</table>

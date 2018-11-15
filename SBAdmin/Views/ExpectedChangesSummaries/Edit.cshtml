@@ -1,0 +1,168 @@
+﻿@model SBAdmin.Models.ExpectedChangesSummary
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>ExpectedChangesSummary</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.GrantId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Outputs, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Outputs, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Outputs, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VAWEliminated, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.VAWEliminated)
+                    @Html.ValidationMessageFor(model => model.VAWEliminated, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RightsToBodilyIntegrity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.RightsToBodilyIntegrity)
+                    @Html.ValidationMessageFor(model => model.RightsToBodilyIntegrity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AccessNecessarySupport, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.AccessNecessarySupport)
+                    @Html.ValidationMessageFor(model => model.AccessNecessarySupport, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IncreasingSupportOfVAW, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.IncreasingSupportOfVAW)
+                    @Html.ValidationMessageFor(model => model.IncreasingSupportOfVAW, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LawsAndPoliciesToPreventAndRespondToVAW, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.LawsAndPoliciesToPreventAndRespondToVAW)
+                    @Html.ValidationMessageFor(model => model.LawsAndPoliciesToPreventAndRespondToVAW, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EconomicRightsAndJusticeForWomenProtected, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.EconomicRightsAndJusticeForWomenProtected)
+                    @Html.ValidationMessageFor(model => model.EconomicRightsAndJusticeForWomenProtected, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AwareOfLabourAndEconomicRights, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.AwareOfLabourAndEconomicRights)
+                    @Html.ValidationMessageFor(model => model.AwareOfLabourAndEconomicRights, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RecogniseAfricanWomensEconomicContributions, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.RecogniseAfricanWomensEconomicContributions)
+                    @Html.ValidationMessageFor(model => model.RecogniseAfricanWomensEconomicContributions, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PoliciesAndLawsToProtectWomensEconomicRights, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.PoliciesAndLawsToProtectWomensEconomicRights)
+                    @Html.ValidationMessageFor(model => model.PoliciesAndLawsToProtectWomensEconomicRights, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ParticipationOfWomenSustained, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.ParticipationOfWomenSustained)
+                    @Html.ValidationMessageFor(model => model.ParticipationOfWomenSustained, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AwarenessOfGenderedChallenges, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.AwarenessOfGenderedChallenges)
+                    @Html.ValidationMessageFor(model => model.AwarenessOfGenderedChallenges, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ParticipationInPolicyAndDecisionMakingProcesses, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.ParticipationInPolicyAndDecisionMakingProcesses)
+                    @Html.ValidationMessageFor(model => model.ParticipationInPolicyAndDecisionMakingProcesses, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LawsAndPoliciesForAfricanWomensPoliticalRights, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.LawsAndPoliciesForAfricanWomensPoliticalRights)
+                    @Html.ValidationMessageFor(model => model.LawsAndPoliciesForAfricanWomensPoliticalRights, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<SBAdmin.Models.GrantRequestInfoSummary>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RequestReason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectObjectives)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectContributions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Challenges)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activities)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequestReason)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjectObjectives)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjectContributions)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Challenges)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Activities)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.GrantId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.GrantId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.GrantId })
+        </td>
+    </tr>
+}
+
+</table>

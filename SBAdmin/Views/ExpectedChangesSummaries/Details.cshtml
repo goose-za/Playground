@@ -1,0 +1,131 @@
+﻿@model SBAdmin.Models.ExpectedChangesSummary
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ExpectedChangesSummary</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Outputs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Outputs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VAWEliminated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VAWEliminated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RightsToBodilyIntegrity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RightsToBodilyIntegrity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccessNecessarySupport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccessNecessarySupport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IncreasingSupportOfVAW)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncreasingSupportOfVAW)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LawsAndPoliciesToPreventAndRespondToVAW)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LawsAndPoliciesToPreventAndRespondToVAW)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EconomicRightsAndJusticeForWomenProtected)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EconomicRightsAndJusticeForWomenProtected)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AwareOfLabourAndEconomicRights)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AwareOfLabourAndEconomicRights)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecogniseAfricanWomensEconomicContributions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecogniseAfricanWomensEconomicContributions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PoliciesAndLawsToProtectWomensEconomicRights)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PoliciesAndLawsToProtectWomensEconomicRights)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParticipationOfWomenSustained)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParticipationOfWomenSustained)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AwarenessOfGenderedChallenges)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AwarenessOfGenderedChallenges)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParticipationInPolicyAndDecisionMakingProcesses)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParticipationInPolicyAndDecisionMakingProcesses)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LawsAndPoliciesForAfricanWomensPoliticalRights)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LawsAndPoliciesForAfricanWomensPoliticalRights)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GrantId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
