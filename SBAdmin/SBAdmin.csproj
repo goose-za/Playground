@@ -56,6 +56,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -109,6 +113,7 @@
     <Content Include="js\plugins\morris\morris-data.js" />
     <Content Include="js\plugins\morris\morris.js" />
     <Content Include="js\plugins\morris\raphael.min.js" />
+    <Content Include="js\site.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -141,11 +146,15 @@
     <Compile Include="Models\GrantInfoSummary.cs" />
     <Compile Include="Models\GrantRequestInfoSummary.cs" />
     <Compile Include="Models\GrantSummary.cs" />
+    <Compile Include="Models\GrantTotals.cs" />
     <Compile Include="Models\IDbContext.cs" />
     <Compile Include="Models\InternalControlsSummary.cs" />
     <Compile Include="Models\MandESummary.cs" />
+    <Compile Include="Models\Note.cs" />
+    <Compile Include="Models\PODashboardSummary.cs" />
     <Compile Include="Models\ProjectSummary.cs" />
     <Compile Include="Models\RiskAssessmentSummary.cs" />
+    <Compile Include="Models\SectionNote.cs" />
     <Compile Include="Models\StaffSummary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

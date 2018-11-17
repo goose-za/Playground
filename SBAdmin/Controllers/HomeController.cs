@@ -1,9 +1,14 @@
-﻿using SBAdmin.Models;
+﻿using Newtonsoft.Json;
+using SBAdmin.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Web;
+using System.Web.Management;
 using System.Web.Mvc;
 
 namespace SBAdmin.Controllers
@@ -11,69 +16,38 @@ namespace SBAdmin.Controllers
     public class HomeController : Controller
     {
         private readonly AimsDbContext _ctx;
-        
-        private readonly string qryAccountingRecordsSummary = "SELECT * FROM vwAccountingRecordsSummary ORDER BY GrantId DESC";
-        private readonly string qryBeneficiarySummary = "SELECT * FROM [vwBeneficiarySummary] ORDER BY GrantId DESC";
-        private readonly string qryBoardSummary = "SELECT * FROM [vwBoardSummary] ORDER BY GrantId DESC";
-        private readonly string qryCapacityNeedsSummary = "SELECT * FROM [vwCapacityNeedsSummary] ORDER BY GrantId DESC";
-        private readonly string qryExpectedChangesSummary = "SELECT * FROM [vwExpectedChangesSummary] ORDER BY GrantId DESC";
-        private readonly string qryFinancialInfoSummary = "SELECT * FROM [vwFinancialInfoSummary] ORDER BY GrantId DESC";
-        private readonly string qryGrantInfoSummary = "SELECT * FROM [vwGrantInfoSummary] ORDER BY GrantId DESC";
-        private readonly string qryGrantRequestInfoSummary = "SELECT * FROM [vwGrantRequestInfoSummary] ORDER BY GrantId DESC";
-        private readonly string qryInternalControlsSummary = "SELECT * FROM [vwInternalControlsSummary] ORDER BY GrantId DESC";
-        private readonly string qryMandESummary = "SELECT * FROM [vwMandESummary] ORDER BY GrantId DESC";
-        private readonly string qryProjectSummary = "SELECT * FROM [vwProjectSummary] ORDER BY GrantId DESC";
-        private readonly string qryRiskAssessmentSummary = "SELECT * FROM [vwRiskAssessmentSummary] ORDER BY GrantId DESC";
-        private readonly string qryStaffSummary = "SELECT * FROM [vwStaffSummary] ORDER BY GrantId DESC";
-        
-        // TODO: Log error and show error page
-        private string GenerateQuery(string viewName, long? grantId)
-        {
-            try
-            {
-                if (grantId == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest).ToString();
-                }
+        private HashSet<SectionNote> _sectionNotes; 
 
-                string queryString = string.Empty;
-                queryString = string.Format("SELECT * FROM [vw{0}] WHERE GrantId = {1} ORDER BY GrantId DESC", viewName, grantId);
-
-                return queryString;
-            }
-            catch (ArgumentNullException ane)
-            {
-                throw ane;
-            }
-            catch (FormatException fe)
-            {
-                throw fe;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        #region Constructors
 
         public HomeController()
         {
             _ctx = new AimsDbContext();
         }
 
+        #endregion
+
+        #region Actions
+
         // GET: Home
         public ActionResult Index()
         {
-            return View();
-        }
 
-        // GET: Dashboard
-        public ActionResult Dashboard()
-        {
-            string qryString = "SELECT * FROM [vwGrantInfoSummary] ORDER BY GrantId DESC";
+            string qryString = "SELECT * FROM [vwGrantInfoSummary] WHERE [Status] IN ('New', 'In Progress', 'Pending') ORDER BY GrantId DESC";
             List<GrantInfoSummary> summaryData = _ctx.Database.SqlQuery<GrantInfoSummary>
                 (qryString).ToList();
 
-            return View("GrantSummary", summaryData);
+            string qryStringTotals = "SELECT * from vwGrantTotalSummary";
+            GrantTotals totals = _ctx.Database.SqlQuery<GrantTotals>
+                (qryStringTotals).ToList().FirstOrDefault();
+
+            PODashboardSummary po = new PODashboardSummary
+            {
+                GrantInfoSummary = summaryData,
+                GrantTotals = totals
+            };
+
+            return View("Dashboard", po);
         }
 
         public ActionResult GrantSummary(long? id)
@@ -107,6 +81,166 @@ namespace SBAdmin.Controllers
             return View("GrantSummary", model);
         }
 
+        [HttpPost]
+        public ActionResult GrantSummary(long id)
+        {
+            var identityName = Thread.CurrentPrincipal.Identity.Name;
+            string errorParam = string.Empty;
+
+            string grantNotesJson = Request.Form["grantNotesJson"];
+            _sectionNotes = JsonConvert.DeserializeObject<HashSet<SectionNote>>(grantNotesJson);
+
+            using (var ctx = new AimsDbContext())
+            {
+                // define the SectionNotes data table
+                DataTable sectionNotesDt = new DataTable();
+
+                // add columns to dt
+                sectionNotesDt.Columns.Add("GrantId", typeof(long));                           // [0]
+                sectionNotesDt.Columns.Add("ProjectSummaryNote", typeof(string));              // [1]
+                sectionNotesDt.Columns.Add("GrantRequestInfoSummaryNote", typeof(string));     // [2]
+                sectionNotesDt.Columns.Add("BeneficiarySummaryNote", typeof(string));          // [3]
+                sectionNotesDt.Columns.Add("ExpectedChangesSummaryNote", typeof(string));      // [4]
+                sectionNotesDt.Columns.Add("CapacityNeedsSummaryNote", typeof(string));        // [5]
+                sectionNotesDt.Columns.Add("RiskAssessmentSummaryNote", typeof(string));       // [6]
+                sectionNotesDt.Columns.Add("MandESummaryNote", typeof(string));                // [7]
+                sectionNotesDt.Columns.Add("FinancialInfoSummaryNote", typeof(string));        // [8]
+                sectionNotesDt.Columns.Add("GovernanceAndHRSummaryNote", typeof(string));      // [9]
+                sectionNotesDt.Columns.Add("AccountingRecordsSummaryNote", typeof(string));    // [10]
+                sectionNotesDt.Columns.Add("InternalControlsSummaryNote", typeof(string));     // [11]
+                sectionNotesDt.Columns.Add("InsertedDateTime", typeof(DateTime));              // [12]
+                sectionNotesDt.Columns.Add("InsertedBy", typeof(string));                      // [13]
+                sectionNotesDt.Columns.Add("ModifiedDateTime", typeof(DateTime));              // [14]
+                sectionNotesDt.Columns.Add("ModifiedBy", typeof(string));                      // [15]
+
+                // create new data row
+                DataRow row = sectionNotesDt.NewRow();
+
+                // populate the grant id column
+                row[0] = id;
+
+                // iterate over the collection of notes 
+                foreach (var note in _sectionNotes)
+                {
+                    // add section note to the related column
+                    row[note.SectionId] = note.Text;
+                }
+
+                // populate audit data
+                row[12] = DateTime.Now;     // InsertedDateTime
+                row[13] = identityName;     // InsertedBy
+                row[14] = DateTime.Now;     // ModifiedDateTime
+                row[15] = identityName;     // ModifiedBy
+
+                // add the row to the data table
+                sectionNotesDt.Rows.Add(row);
+
+                // execute the stored proc against the db
+                var sql = @"InsertGrantSectionNotes @SectionNotes, @Error OUT";
+
+                var result = ctx.Database.ExecuteSqlCommand(sql,
+                    parameters: new[]
+                    {
+                        new SqlParameter
+                        {
+                            ParameterName = "@SectionNotes",
+                            SqlDbType = SqlDbType.Structured,
+                            TypeName = "dbo.udtSectionNotes",
+                            Direction = ParameterDirection.Input,
+                            Value = sectionNotesDt
+                        },
+                        new SqlParameter
+                        {
+                            ParameterName = "@Error",
+                            SqlDbType = SqlDbType.NVarChar,
+                            Direction = ParameterDirection.Output,
+                            Value = errorParam
+                        }
+                    });
+
+                if(errorParam != string.Empty)
+                {
+                    throw new SqlExecutionException(errorParam);
+                }
+
+                // send the data back to the workflow to send back to the grantee
+            }
+
+            return View();
+        }
+
+        #region Sample Pages
+
+        // GET: Charts
+        public ActionResult Charts()
+        {
+            return View();
+        }
+
+        // GET: Forms
+        public ActionResult Forms()
+        {
+            return View();
+        }
+
+        // GET: Tables
+        public ActionResult Tables()
+        {
+            return View();
+        }
+
+        // GET: Boot Strap Elements
+        public ActionResult BSElements()
+        {
+            return View();
+        }
+
+        // GET: Boot Strap Grid
+        public ActionResult BSGrid()
+        {
+            return View();
+        }
+
+        public ActionResult Blank()
+        {
+            return View();
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Private Functions
+
+        // TODO: Log error and show error page
+        private string GenerateQuery(string viewName, long? grantId)
+        {
+            try
+            {
+                if (grantId == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest).ToString();
+                }
+
+                string queryString = string.Empty;
+                queryString = string.Format("SELECT * FROM [vw{0}] WHERE GrantId = {1} ORDER BY GrantId DESC", viewName, grantId);
+
+                return queryString;
+            }
+            catch (ArgumentNullException ane)
+            {
+                throw ane;
+            }
+            catch (FormatException fe)
+            {
+                throw fe;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         private object GetItemDetails(string ViewName, long? Id, AimsDbContext ctx)
         {
             try
@@ -123,7 +257,7 @@ namespace SBAdmin.Controllers
 
                 // awful code that needs to be refactored
                 switch (ViewName)
-                {                    
+                {
                     case "AccountingRecordsSummary":
                         item = ctx.Database.SqlQuery<AccountingRecordsSummary>(GenerateQuery("AccountingRecordsSummary", Id)).ToList().FirstOrDefault();
                         return item;
@@ -181,39 +315,6 @@ namespace SBAdmin.Controllers
             }
         }
 
-        // GET: Charts
-        public ActionResult Charts()
-        {
-            return View();
-        }
-
-        // GET: Forms
-        public ActionResult Forms()
-        {
-            return View();
-        }
-
-        // GET: Tables
-        public ActionResult Tables()
-        {
-            return View();
-        }
-
-        // GET: Boot Strap Elements
-        public ActionResult BSElements()
-        {
-            return View();
-        }
-
-        // GET: Boot Strap Grid
-        public ActionResult BSGrid()
-        {
-            return View();
-        }
-
-        public ActionResult Blank()
-        {
-            return View();
-        }
+        #endregion  
     }
 }

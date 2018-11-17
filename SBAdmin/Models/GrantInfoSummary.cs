@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SBAdmin.Models
 {
@@ -11,6 +12,8 @@ namespace SBAdmin.Models
         [Display(Name = "Why are you seeking a grant from the African Women's Development Fund ? ")]
         public string RequestReason { get; set; }
         [Display(Name = "Please state the project objectives.")]
-        public string ProjectObjectives { get; set; }   
+        public string ProjectObjectives { get; set; }
+        [Display(Name = "Current project status:")]
+        public string Status { get; set; }
     }
 }

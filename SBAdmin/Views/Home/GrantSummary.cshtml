@@ -1,17 +1,37 @@
-﻿@model SBAdmin.Models.GrantSummary
+﻿@using Newtonsoft.Json
+@using SBAdmin.Models
+
+@model SBAdmin.Models.GrantSummary
 
 @{
     ViewBag.Title = "Grant Summary";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<!-- Page Heading -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            @ViewBag.Title
+        </h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Home")">Home</a>
+            </li>
+            <li class="breadcrumb-item active">
+                @ViewBag.Title
+            </li>
+        </ol>
+    </div>
+</div>
+<!-- /.row -->
 <section id="content">
-    <div class="container">
+    <div>
         <div class="row">
-            <div class="col-sm-11">
-                <div class="panel panel-default">
+            <div class="col-lg-12">
+                <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fa fa-info-circle" style="margin-right:10px;"></i>Project Summary</h4>
+                        <h4 class="panel-title"><i class="fas fa-project-diagram" style="margin-right:10px;"></i>Project Summary</h4>
                     </div>
                     <div class="panel-body">
                         <dl class="">
@@ -86,14 +106,39 @@
                             </dd>
                         </dl>
                     </div>
+                    <div class="panel-footer">
+                        <span class="pull-left">
+                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                            <a data-toggle="collapse" 
+                               href="#collapseProjectSummary" 
+                               aria-expanded="false" 
+                               aria-controls="collapseProjectSummary">Add note
+                            </a>
+                        </span>
+                        <div class="clearfix"></div>
+                        <div class="collapse" id="collapseProjectSummary">
+                            <form class="form-horizontal" 
+                                  id="projectSummaryNote" 
+                                  name="projectSummaryNote" 
+                                  style="padding-top: 10px;">
+                                <div class="form-group">
+                                    <div class="col-lg-12">
+                                        <textarea class="form-control" id="projectSummaryNote" name="projectSummaryNote" rows="3" placeholder="Add new query"></textarea>
+                                        <br />
+                                        <a class="btn btn-success" id="btnProjectSummaryNote" href="#" role="button" onclick="AddNote(1, '#btnProjectSummaryNote')">Add note ...</a>
+                                    </div>
+                                </div>
+                            </form>                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-11">
-                <div class="panel panel-default">
+            <div class="col-lg-12">
+                <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fa fa-info-circle" style="margin-right:10px;"></i>Grant Request Information Summary</h4>
+                        <h4 class="panel-title"><i class="fas fa-file-invoice-dollar" style="margin-right:10px;"></i>Grant Request Information Summary</h4>
                     </div>
                     <div class="panel-body">
                         <dl>
@@ -134,14 +179,38 @@
 
                         </dl>
                     </div>
+                    <div class="panel-footer">
+                        <span class="pull-left">
+                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                            <a data-toggle="collapse"
+                               href="#collapseGrantRequestInformationSummary"
+                               aria-expanded="false"
+                               aria-controls="collapseGrantRequestInformationSummary">
+                                Add note
+                            </a>
+                        </span>
+                        <div class="clearfix"></div>
+                        <div class="collapse" id="collapseGrantRequestInformationSummary">
+                            <form class="form-horizontal"
+                                  id="grantRequestInformationSummaryNote"
+                                  name="grantRequestInformationSummaryNote"
+                                  style="padding-top: 10px;">
+                                <div class="form-group">
+                                    <div class="col-lg-12">
+                                        <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-11">
-                <div class="panel panel-default">
+            <div class="col-lg-12">
+                <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fa fa-info-circle" style="margin-right:10px;"></i>Beneficiary Summary</h4>
+                        <h4 class="panel-title"><i class="fas fa-users" style="margin-right:10px;"></i>Beneficiary Summary</h4>
                     </div>
                     <div class="panel-body">
                         <p>What category(ies) of women will you be working with and how many per category? Please indicate below.</p>
@@ -149,7 +218,7 @@
                             <thead>
                                 <tr>
                                     <th>Benficiary Categories</th>
-                                    <th>Number</th>
+                                    <th class="col-md-1">Number</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -259,7 +328,7 @@
                             <thead>
                                 <tr>
                                     <th>Category</th>
-                                    <th>Number</th>
+                                    <th class="col-md-1">Number</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -309,7 +378,7 @@
                             <thead>
                                 <tr>
                                     <th>Indirect Beneficiaries</th>
-                                    <th>Number</th>
+                                    <th class="col-md-1">Number</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -376,14 +445,38 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="panel-footer">
+                        <span class="pull-left">
+                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                            <a data-toggle="collapse"
+                               href="#collapseBeneficiarySummary"
+                               aria-expanded="false"
+                               aria-controls="collapseBeneficiarySummary">
+                                Add note
+                            </a>
+                        </span>
+                        <div class="clearfix"></div>
+                        <div class="collapse" id="collapseBeneficiarySummary">
+                            <form class="form-horizontal"
+                                  id="beneficiarySummaryNote"
+                                  name="beneficiarySummaryNoteNote"
+                                  style="padding-top: 10px;">
+                                <div class="form-group">
+                                    <div class="col-lg-12">
+                                        <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-11">
-                <div class="panel panel-default">
+            <div class="col-lg-12">
+                <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fa fa-info-circle" style="margin-right:10px;"></i>Expected Changes Summary</h4>
+                        <h4 class="panel-title"><i class="fas fa-exchange-alt" style="margin-right:10px;"></i>Expected Changes Summary</h4>
                     </div>
                     <div class="panel-body">
                         <p>
@@ -402,136 +495,184 @@
                         <table class="table table-condensed table-responsive">
                             <tr>
                                 <td colspan="2" class="info">@Html.DisplayNameFor(model => model.ExpectedChangesSummary.VAWEliminated)</td>
-                                <td>@Html.DisplayFor(model => model.ExpectedChangesSummary.VAWEliminated)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.VAWEliminated)</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.RightsToBodilyIntegrity)</td>
-                                <td>@Html.DisplayFor(model => model.ExpectedChangesSummary.RightsToBodilyIntegrity)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.RightsToBodilyIntegrity)</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.AccessNecessarySupport)</td>
-                                <td>@Html.DisplayFor(model => model.ExpectedChangesSummary.AccessNecessarySupport)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.AccessNecessarySupport)</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.IncreasingSupportOfVAW)</td>
-                                <td>@Html.DisplayFor(model => model.ExpectedChangesSummary.IncreasingSupportOfVAW)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.IncreasingSupportOfVAW)</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.LawsAndPoliciesToPreventAndRespondToVAW)</td>
-                                <td>@Html.DisplayFor(model => model.ExpectedChangesSummary.LawsAndPoliciesToPreventAndRespondToVAW)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.LawsAndPoliciesToPreventAndRespondToVAW)</td>
                             </tr>
                             <tr>
                                 <td colspan="2" class="info">@Html.DisplayNameFor(model => model.ExpectedChangesSummary.EconomicRightsAndJusticeForWomenProtected)</td>
-                                <td>@Html.DisplayFor(model => model.ExpectedChangesSummary.EconomicRightsAndJusticeForWomenProtected)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.EconomicRightsAndJusticeForWomenProtected)</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.AwareOfLabourAndEconomicRights)</td>
-                                <td>@Html.DisplayFor(model => model.ExpectedChangesSummary.AwareOfLabourAndEconomicRights)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.AwareOfLabourAndEconomicRights)</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.RecogniseAfricanWomensEconomicContributions)</td>
-                                <td>@Html.DisplayFor(model => model.ExpectedChangesSummary.RecogniseAfricanWomensEconomicContributions)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.RecogniseAfricanWomensEconomicContributions)</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.PoliciesAndLawsToProtectWomensEconomicRights)</td>
-                                <td>@Html.DisplayFor(model => model.ExpectedChangesSummary.PoliciesAndLawsToProtectWomensEconomicRights)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.PoliciesAndLawsToProtectWomensEconomicRights)</td>
                             </tr>
                             <tr>
                                 <td colspan="2" class="info">@Html.DisplayNameFor(model => model.ExpectedChangesSummary.ParticipationOfWomenSustained)</td>
-                                <td>@Html.DisplayFor(model => model.ExpectedChangesSummary.ParticipationOfWomenSustained)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.ParticipationOfWomenSustained)</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.AwarenessOfGenderedChallenges)</td>
-                                <td>@Html.DisplayFor(model => model.ExpectedChangesSummary.AwarenessOfGenderedChallenges)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.AwarenessOfGenderedChallenges)</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.ParticipationInPolicyAndDecisionMakingProcesses)</td>
-                                <td>@Html.DisplayFor(model => model.ExpectedChangesSummary.ParticipationInPolicyAndDecisionMakingProcesses)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.ParticipationInPolicyAndDecisionMakingProcesses)</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.LawsAndPoliciesForAfricanWomensPoliticalRights)</td>
-                                <td>@Html.DisplayFor(model => model.ExpectedChangesSummary.LawsAndPoliciesForAfricanWomensPoliticalRights)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.LawsAndPoliciesForAfricanWomensPoliticalRights)</td>
                             </tr>
                         </table>
+                    </div>
+                    <div class="panel-footer">
+                        <span class="pull-left">
+                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                            <a data-toggle="collapse"
+                               href="#collapseExpectedChangesSummary"
+                               aria-expanded="false"
+                               aria-controls="collapseExpectedChangesSummary">
+                                Add note
+                            </a>
+                        </span>
+                        <div class="clearfix"></div>
+                        <div class="collapse" id="collapseExpectedChangesSummary">
+                            <form class="form-horizontal"
+                                  id="expectedChangesSummaryNote"
+                                  name="expectedChangesSummaryNote"
+                                  style="padding-top: 10px;">
+                                <div class="form-group">
+                                    <div class="col-lg-12">
+                                        <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-11">
-                <div class="panel panel-default">
+            <div class="col-lg-12">
+                <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fa fa-info-circle" style="margin-right:10px;"></i>Capacity Needs Summary</h4>
+                        <h4 class="panel-title"><i class="fa fa-chalkboard-teacher" style="margin-right:10px;"></i>Capacity Needs Summary</h4>
                     </div>
                     <div class="panel-body">
                         <div class="alert alert-success" role="alert">
-                            <strong>Note</strong> that all successful applicants will engage in a capacity needs
+                            <i class="fas fa-exclamation-triangle"></i>&nbsp; &nbsp; &nbsp; All successful applicants will engage in a capacity needs
                             assessment and may receive follow up capacity buildig technical 
                             and financial support as needed.
                         </div>
                         <br />
                         <p>
-                            From the list below, in whicg areas do you need capacity building 
+                            From the list below, in which areas do you need capacity building 
                             support in order to achieve your organisation's/project objectives?
                         </p>
                         <br />
                         <table class="table table-condensed table-responsive">
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.SystemsDevelopment)</td>
-                                <td>@Html.DisplayFor(model => model.CapacityNeedsSummary.SystemsDevelopment)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.SystemsDevelopment)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.GovernanceStrengthening)</td>
-                                <td>@Html.DisplayFor(model => model.CapacityNeedsSummary.GovernanceStrengthening)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.GovernanceStrengthening)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.OrganisationalStepChange)</td>
-                                <td>@Html.DisplayFor(model => model.CapacityNeedsSummary.OrganisationalStepChange)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.OrganisationalStepChange)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.Fundraising)</td>
-                                <td>@Html.DisplayFor(model => model.CapacityNeedsSummary.Fundraising)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.Fundraising)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.HRandStaffing)</td>
-                                <td>@Html.DisplayFor(model => model.CapacityNeedsSummary.HRandStaffing)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.HRandStaffing)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.FinancialManagement)</td>
-                                <td>@Html.DisplayFor(model => model.CapacityNeedsSummary.FinancialManagement)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.FinancialManagement)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.MonitoringLearningAndEvaluation)</td>
-                                <td>@Html.DisplayFor(model => model.CapacityNeedsSummary.MonitoringLearningAndEvaluation)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.MonitoringLearningAndEvaluation)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.MarketingAndCommunication)</td>
-                                <td>@Html.DisplayFor(model => model.CapacityNeedsSummary.MarketingAndCommunication)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.MarketingAndCommunication)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.CommunityOutreachAndNetworking)</td>
-                                <td>@Html.DisplayFor(model => model.CapacityNeedsSummary.CommunityOutreachAndNetworking)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.CommunityOutreachAndNetworking)</td>
                             </tr>
                         </table>
+                    </div>
+                    <div class="panel-footer">
+                        <span class="pull-left">
+                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                            <a data-toggle="collapse"
+                               href="#collapseCapacityNeedsSummary"
+                               aria-expanded="false"
+                               aria-controls="collapseCapacityNeedsSummary">
+                                Add note
+                            </a>
+                        </span>
+                        <div class="clearfix"></div>
+                        <div class="collapse" id="collapseCapacityNeedsSummary">
+                            <form class="form-horizontal"
+                                  id="capacityNeedsSummaryNote"
+                                  name="capacityNeedsSummaryNote"
+                                  style="padding-top: 10px;">
+                                <div class="form-group">
+                                    <div class="col-lg-12">
+                                        <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-11">
-                <div class="panel panel-default">
+            <div class="col-lg-12">
+                <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fa fa-info-circle" style="margin-right:10px;"></i>Risk Assessment Summary</h4>
+                        <h4 class="panel-title"><i class="fas fa-glasses" style="margin-right:10px;"></i>Risk Assessment Summary</h4>
                     </div>
                     <div class="panel-body">
                         <p>
@@ -737,14 +878,38 @@
 
                         </dl>*@
                     </div>
+                    <div class="panel-footer">
+                        <span class="pull-left">
+                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                            <a data-toggle="collapse"
+                               href="#collapseRiskAssessmentSummary"
+                               aria-expanded="false"
+                               aria-controls="collapseRiskAssessmentSummary">
+                                Add note
+                            </a>
+                        </span>
+                        <div class="clearfix"></div>
+                        <div class="collapse" id="collapseRiskAssessmentSummary">
+                            <form class="form-horizontal"
+                                  id="riskAssessmentSummaryNote"
+                                  name="riskAssessmentSummaryNote"
+                                  style="padding-top: 10px;">
+                                <div class="form-group">
+                                    <div class="col-lg-12">
+                                        <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-11">
-                <div class="panel panel-default">
+            <div class="col-lg-12">
+                <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fa fa-info-circle" style="margin-right:10px;"></i>Monitoring and Evaluation Summary</h4>
+                        <h4 class="panel-title"><i class="fas fa-clipboard-check" style="margin-right:10px;"></i>Monitoring and Evaluation Summary</h4>
                     </div>
                     <div class="panel-body">
                         <dl>
@@ -770,14 +935,38 @@
                             </dd>
                         </dl>
                     </div>
+                    <div class="panel-footer">
+                        <span class="pull-left">
+                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                            <a data-toggle="collapse"
+                               href="#collapseMandESummary"
+                               aria-expanded="false"
+                               aria-controls="collapseMandESummary">
+                                Add note
+                            </a>
+                        </span>
+                        <div class="clearfix"></div>
+                        <div class="collapse" id="collapseMandESummary">
+                            <form class="form-horizontal"
+                                  id="mandESummaryNote"
+                                  name="mandESummaryNote"
+                                  style="padding-top: 10px;">
+                                <div class="form-group">
+                                    <div class="col-lg-12">
+                                        <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-11">
-                <div class="panel panel-default">
+            <div class="col-lg-12">
+                <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fa fa-info-circle" style="margin-right:10px;"></i>Financial Information Summary</h4>
+                        <h4 class="panel-title"><i class="fas fa-money-check-alt" style="margin-right:10px;"></i>Financial Information Summary</h4>
                     </div>
                     <div class="panel-body">
                         <p>
@@ -808,14 +997,38 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="panel-footer">
+                        <span class="pull-left">
+                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                            <a data-toggle="collapse"
+                               href="#collapseFinancialInformationSummary"
+                               aria-expanded="false"
+                               aria-controls="collapseFinancialInformationSummary">
+                                Add note
+                            </a>
+                        </span>
+                        <div class="clearfix"></div>
+                        <div class="collapse" id="collapseFinancialInformationSummary">
+                            <form class="form-horizontal"
+                                  id="financialInformationSummaryNote"
+                                  name="financialInformationSummaryNote"
+                                  style="padding-top: 10px;">
+                                <div class="form-group">
+                                    <div class="col-lg-12">
+                                        <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-11">
-                <div class="panel panel-default">
+            <div class="col-lg-12">
+                <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fa fa-info-circle" style="margin-right:10px;"></i>Governance and Human Resources</h4>
+                        <h4 class="panel-title"><i class="fas fa-id-card-alt" style="margin-right:10px;"></i>Governance and Human Resources</h4>
                     </div>
                     <div class="panel-body">
                         <p>
@@ -881,21 +1094,47 @@
                             }
                         </table>
                     </div>
+                    <div class="panel-footer">
+                        <span class="pull-left">
+                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                            <a data-toggle="collapse"
+                               href="#collapseGovernanceAndHRSummary"
+                               aria-expanded="false"
+                               aria-controls="collapseGovernanceAndHRSummary">
+                                Add note
+                            </a>
+                        </span>
+                        <div class="clearfix"></div>
+                        <div class="collapse" id="collapseGovernanceAndHRSummary">
+                            <form class="form-horizontal"
+                                  id="governanceAndHRSummaryNote"
+                                  name="governanceAndHRSummaryNote"
+                                  style="padding-top: 10px;">
+                                <div class="form-group">
+                                    <div class="col-lg-12">
+                                        <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <h4>Financial Assessment</h4>
-            <p>
-                <em>To be completed by the Accounts Officer or Person responsible for financial management.</em>
-            </p>
-            <br />
+            <div class="col-lg-12">
+                <h4>Financial Assessment</h4>
+                <p>
+                    <em>To be completed by the Accounts Officer or Person responsible for financial management.</em>
+                </p>
+                <br />
+            </div>
         </div>
         <div class="row">
-            <div class="col-sm-11">
-                <div class="panel panel-default">
+            <div class="col-lg-12">
+                <div class="panel panel-info">
                     <div class="panel-heading">                        
-                        <h4 class="panel-title"><i class="fa fa-info-circle" style="margin-right:10px;"></i>Accounting Records Summary</h4>
+                        <h4 class="panel-title"><i class="fas fa-book" style="margin-right:10px;"></i>Accounting Records Summary</h4>
                     </div>
                     <div class="panel-body">
                         <p>Please select which of the following basic accounting records you keep.</p>
@@ -903,27 +1142,27 @@
                         <table class="table table-condensed table-responsive">
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.Cashbook)</td>
-                                <td>@Html.DisplayFor(model => model.AccountingRecordsSummary.Cashbook)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.Cashbook)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.PettyCashbook)</td>
-                                <td>@Html.DisplayFor(model => model.AccountingRecordsSummary.PettyCashbook)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.PettyCashbook)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.ExpendituresFile)</td>
-                                <td>@Html.DisplayFor(model => model.AccountingRecordsSummary.ExpendituresFile)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.ExpendituresFile)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.IncomingFundsFile)</td>
-                                <td>@Html.DisplayFor(model => model.AccountingRecordsSummary.IncomingFundsFile)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.IncomingFundsFile)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.BankAccountFile)</td>
-                                <td>@Html.DisplayFor(model => model.AccountingRecordsSummary.BankAccountFile)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.BankAccountFile)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.FixedAssetRegister)</td>
-                                <td>@Html.DisplayFor(model => model.AccountingRecordsSummary.FixedAssetRegister)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.FixedAssetRegister)</td>
                             </tr>
                         </table>
                         <p>Please select which of the following additional accounting records you keep.</p>
@@ -931,23 +1170,23 @@
                         <table class="table table-condensed table-responsive">
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.PayrollRecords)</td>
-                                <td>@Html.DisplayFor(model => model.AccountingRecordsSummary.PayrollRecords)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.PayrollRecords)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.GeneralLedgerNominalLedger)</td>
-                                <td>@Html.DisplayFor(model => model.AccountingRecordsSummary.GeneralLedgerNominalLedger)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.GeneralLedgerNominalLedger)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.AccountsPayablePurchaseLedger)</td>
-                                <td>@Html.DisplayFor(model => model.AccountingRecordsSummary.AccountsPayablePurchaseLedger)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.AccountsPayablePurchaseLedger)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.AccountsReceivableSalesLedger)</td>
-                                <td>@Html.DisplayFor(model => model.AccountingRecordsSummary.AccountsReceivableSalesLedger)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.AccountsReceivableSalesLedger)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.AdditionalAccountingRecords)</td>
-                                <td>@Html.DisplayFor(model => model.AccountingRecordsSummary.AdditionalAccountingRecords)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.AdditionalAccountingRecords)</td>
                             </tr>
                         </table>
 
@@ -967,48 +1206,73 @@
                             </dd>
                         </dl>
                     </div>
+                    <div class="panel-footer">
+                        <span class="pull-left">
+                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                            <a data-toggle="collapse"
+                               href="#collapseAccountingRecordsSummary"
+                               aria-expanded="false"
+                               aria-controls="collapseAccountingRecordsSummary">
+                                Add note
+                            </a>
+                        </span>
+                        <div class="clearfix"></div>
+                        <div class="collapse" id="collapseAccountingRecordsSummary">
+                            <form class="form-horizontal"
+                                  id="accountingRecordsSummaryNote"
+                                  name="accountingRecordsSummaryNote"
+                                  style="padding-top: 10px;">
+                                <div class="form-group">
+                                    <div class="col-lg-12">
+                                        <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>        
         <div class="row">
-            <div class="col-sm-11">
-                <div class="panel panel-default">
+            <div class="col-lg-12">
+                <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fa fa-info-circle" style="margin-right:10px;"></i>Internal Controls Summary</h4>
+                        <h4 class="panel-title"><i class="fas fa-briefcase" style="margin-right:10px;"></i>Internal Controls Summary</h4>
                     </div>
                     <div class="panel-body">
                         <p>
                             Please select which of the following controls over purchases
                             applies to your organisation.
                         </p>
+                        <br />
                         <table class="table table-condensed table-responsive">
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.SupportingDocumentationForExpenditure)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.SupportingDocumentationForExpenditure)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.SupportingDocumentationForExpenditure)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ExpenditureAuthorisedUsingPaymentVoucher)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.ExpenditureAuthorisedUsingPaymentVoucher)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ExpenditureAuthorisedUsingPaymentVoucher)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.InvoicesCheckedAgainstOrders)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.InvoicesCheckedAgainstOrders)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.InvoicesCheckedAgainstOrders)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.RecordsOfOrdersPlace)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.RecordsOfOrdersPlace)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.RecordsOfOrdersPlace)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.QualityAndQuantityChecked)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.QualityAndQuantityChecked)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.QualityAndQuantityChecked)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.PaymentsMadeAgainstOriginalInvoices)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.PaymentsMadeAgainstOriginalInvoices)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.PaymentsMadeAgainstOriginalInvoices)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.RegularStockTakingUndertaken)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.RegularStockTakingUndertaken)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.RegularStockTakingUndertaken)</td>
                             </tr>
                         </table>
                         <br />
@@ -1019,23 +1283,23 @@
                         <table class="table table-condensed table-responsive">
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ConditionsForChequesComplied)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.ConditionsForChequesComplied)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ConditionsForChequesComplied)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.MultipeignatoriesOnBankMandate)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.MultipeignatoriesOnBankMandate)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.MultipeignatoriesOnBankMandate)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ChequeExpenditureNoted)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.ChequeExpenditureNoted)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ChequeExpenditureNoted)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ChequeStubsCompleted)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.ChequeStubsCompleted)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ChequeStubsCompleted)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ChequesSignedWithDocumentaryEvidence)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.ChequesSignedWithDocumentaryEvidence)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ChequesSignedWithDocumentaryEvidence)</td>
                             </tr>
                         </table>
                         <br />
@@ -1046,27 +1310,27 @@
                         <table class="table table-condensed table-responsive">
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.PettyCashPaymentsHaveDocumentation)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.PettyCashPaymentsHaveDocumentation)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.PettyCashPaymentsHaveDocumentation)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.SupportingDocumentationAuthorised)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.SupportingDocumentationAuthorised)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.SupportingDocumentationAuthorised)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ClaimAmountsEntered)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.ClaimAmountsEntered)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ClaimAmountsEntered)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.PaymentsNotedInPettyCashBook)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.PaymentsNotedInPettyCashBook)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.PaymentsNotedInPettyCashBook)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ToppingUpWithdrawalsNotedInPettyCashBook)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.ToppingUpWithdrawalsNotedInPettyCashBook)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ToppingUpWithdrawalsNotedInPettyCashBook)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.RegularChecksOfPettyCashRecords)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.RegularChecksOfPettyCashRecords)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.RegularChecksOfPettyCashRecords)</td>
                             </tr>
                         </table>
                         <br />
@@ -1077,23 +1341,23 @@
                         <table class="table table-condensed table-responsive">
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.BankBccountsHeldInNameOfOrganisation)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.BankBccountsHeldInNameOfOrganisation)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.BankBccountsHeldInNameOfOrganisation)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.InstructionsToOpenCloseAccountsAuthorised)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.InstructionsToOpenCloseAccountsAuthorised)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.InstructionsToOpenCloseAccountsAuthorised)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.SecureRecordsHeld)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.SecureRecordsHeld)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.SecureRecordsHeld)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.RegularBankReconciliationsPerformed)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.RegularBankReconciliationsPerformed)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.RegularBankReconciliationsPerformed)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.BankStatementsInspected)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.BankStatementsInspected)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.BankStatementsInspected)</td>
                             </tr>
                         </table>
                         <br />
@@ -1104,15 +1368,15 @@
                         <table class="table table-condensed table-responsive">
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.SalaryLevelsAuthorised)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.SalaryLevelsAuthorised)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.SalaryLevelsAuthorised)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.StaffEmployedUnderContract)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.StaffEmployedUnderContract)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.StaffEmployedUnderContract)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ComplianceWithStatutoryTaxRegulations)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.ComplianceWithStatutoryTaxRegulations)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ComplianceWithStatutoryTaxRegulations)</td>
                             </tr>
                         </table>
                         <br />
@@ -1123,15 +1387,15 @@
                         <table class="table table-condensed table-responsive">
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.AssetsCheckedRegularly)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.AssetsCheckedRegularly)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.AssetsCheckedRegularly)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.InsuranceCover)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.InsuranceCover)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.InsuranceCover)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.UseOfFixedAssetsReviewed)</td>
-                                <td>@Html.DisplayFor(model => model.InternalControlsSummary.UseOfFixedAssetsReviewed)</td>
+                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.UseOfFixedAssetsReviewed)</td>
                             </tr>
 
                         </table>
@@ -1148,7 +1412,7 @@
                                 @Html.DisplayNameFor(model => model.InternalControlsSummary.PeriodRecentStatements)
                             </dt>
                             <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.InternalControlsSummary.PeriodRecentStatements)
+                                @Html.DisplayFor(model => model.InternalControlsSummary.PeriodRecentStatements) month(s)
                             </dd>
 
                             <dt>
@@ -1190,14 +1454,14 @@
                                 @Html.DisplayNameFor(model => model.InternalControlsSummary.ManagerReportFrequency)
                             </dt>
                             <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.InternalControlsSummary.ManagerReportFrequency)
+                                @Html.DisplayFor(model => model.InternalControlsSummary.ManagerReportFrequency) month(s)
                             </dd>
 
                             <dt>
                                 @Html.DisplayNameFor(model => model.InternalControlsSummary.ManagerReportCoveragePeriod)
                             </dt>
                             <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.InternalControlsSummary.ManagerReportCoveragePeriod)
+                                @Html.DisplayFor(model => model.InternalControlsSummary.ManagerReportCoveragePeriod) month(s)
                             </dd>
 
                             <dt>
@@ -1218,7 +1482,7 @@
                                 @Html.DisplayNameFor(model => model.InternalControlsSummary.DonorReportFrequency)
                             </dt>
                             <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.InternalControlsSummary.DonorReportFrequency)
+                                @Html.DisplayFor(model => model.InternalControlsSummary.DonorReportFrequency) month(s)
                             </dd>
 
                             <dt>
@@ -1236,12 +1500,44 @@
                             </dd>
                         </dl>
                     </div>
+                    <div class="panel-footer">
+                        <span class="pull-left">
+                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                            <a data-toggle="collapse"
+                               href="#collapseInternalControlsSummary"
+                               aria-expanded="false"
+                               aria-controls="collapseInternalControlsSummary">
+                                Add note
+                            </a>
+                        </span>
+                        <div class="clearfix"></div>
+                        <div class="collapse" id="collapseInternalControlsSummary">
+                            <form class="form-horizontal"
+                                  id="internalControlsSummaryNote"
+                                  name="internalControlsSummaryNote"
+                                  style="padding-top: 10px;">
+                                <div class="form-group">
+                                    <div class="col-lg-12">
+                                        <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- Hidden control to store serialized grant note data -->
+        @{
+            string grantNotesJson = JsonConvert.SerializeObject(new List<SectionNote>());
+        }
+
+        @Html.Hidden("grantNotesJson", grantNotesJson)
+
+
         <div class="row">
-            <div class="col-sm-11">
+            <div class="col-lg-12">
                 <p>
                     @Html.ActionLink("Back to Dashboard", "Index")
                 </p>
@@ -1249,3 +1545,8 @@
         </div>
     </div>
 </section>
+
+@section localscripts
+{
+    <script src="~/js/site.js"></script>
+}
