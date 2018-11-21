@@ -32,22 +32,35 @@ namespace SBAdmin.Controllers
         // GET: Home
         public ActionResult Index()
         {
-
-            string qryString = "SELECT * FROM [vwGrantInfoSummary] WHERE [Status] IN ('New', 'In Progress', 'Pending') ORDER BY GrantId DESC";
-            List<GrantInfoSummary> summaryData = _ctx.Database.SqlQuery<GrantInfoSummary>
-                (qryString).ToList();
-
-            string qryStringTotals = "SELECT * from vwGrantTotalSummary";
-            GrantTotals totals = _ctx.Database.SqlQuery<GrantTotals>
-                (qryStringTotals).ToList().FirstOrDefault();
-
-            PODashboardSummary po = new PODashboardSummary
+            // check if we have a PODashboardSummary object in the Session
+            if (Session["poDashboardData"] == null)
             {
-                GrantInfoSummary = summaryData,
-                GrantTotals = totals
-            };
+                // we don't, so let's create a new object, populate it and throw it into the session variable
+                string qryString = "SELECT * FROM [vwGrantInfoSummary] WHERE [Status] IN ('New', 'In Progress', 'Pending') ORDER BY GrantId DESC";
+                List<GrantInfoSummary> summaryData = _ctx.Database.SqlQuery<GrantInfoSummary>
+                    (qryString).ToList();
 
-            return View("Dashboard", po);
+                string qryStringTotals = "SELECT * from vwGrantTotalSummary";
+                GrantTotals totals = _ctx.Database.SqlQuery<GrantTotals>
+                    (qryStringTotals).ToList().FirstOrDefault();
+
+                PODashboardSummary po = new PODashboardSummary
+                {
+                    GrantInfoSummary = summaryData,
+                    GrantTotals = totals
+                };
+
+                Session["poDashboardData"] = po;
+
+                return View("Dashboard", po);
+            }
+            else
+            {
+                // we have a PODashboardSummary object in the Session
+                // so let's just get it and return the view with the data
+
+                return View("Dashboard", (PODashboardSummary)Session["poDashboardData"]);
+            }
         }
 
         public ActionResult GrantSummary(long? id)
@@ -57,35 +70,51 @@ namespace SBAdmin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            GrantSummary model = new GrantSummary();
-                        
-            model.AccountingRecordsSummary = (AccountingRecordsSummary)GetItemDetails("AccountingRecordsSummary", id, _ctx);
-            model.BeneficiarySummary = (BeneficiarySummary)GetItemDetails("BeneficiarySummary", id, _ctx);
-            model.BoardSummary = (IEnumerable<BoardSummary>)GetItemDetails("BoardSummary", id, _ctx);
-            model.CapacityNeedsSummary = (CapacityNeedsSummary)GetItemDetails("CapacityNeedsSummary", id, _ctx);
-            model.ExpectedChangesSummary = (ExpectedChangesSummary)GetItemDetails("ExpectedChangesSummary", id, _ctx);
-            model.FinancialInfoSummary = (FinancialInfoSummary)GetItemDetails("FinancialInfoSummary", id, _ctx);
-            model.GrantInfoSummary = (GrantInfoSummary)GetItemDetails("GrantInfoSummary", id, _ctx);
-            model.GrantRequestInfoSummary = (GrantRequestInfoSummary)GetItemDetails("GrantRequestInfoSummary", id, _ctx);
-            model.InternalControlsSummary = (InternalControlsSummary)GetItemDetails("InternalControlsSummary", id, _ctx);
-            model.MandESummary = (MandESummary)GetItemDetails("MandESummary", id, _ctx);
-            model.ProjectSummary = (ProjectSummary)GetItemDetails("ProjectSummary", id, _ctx);
-            model.RiskAssessmentSummary = (RiskAssessmentSummary)GetItemDetails("RiskAssessmentSummary", id, _ctx);
-            model.StaffSummary = (IEnumerable<StaffSummary>)GetItemDetails("StaffSummary", id, _ctx);
-            
-            if (model == null)
+            // check if we have a GrantSummary object in the Session
+            if (Session["grantSummaryData"] == null)
             {
-                return HttpNotFound();
-            }
+                // we don't, so let's create a new object, populate it and throw it into the session variable
+                GrantSummary model = new GrantSummary();
 
-            return View("GrantSummary", model);
+                model.AccountingRecordsSummary = (AccountingRecordsSummary)GetItemDetails("AccountingRecordsSummary", id, _ctx);
+                model.BeneficiarySummary = (BeneficiarySummary)GetItemDetails("BeneficiarySummary", id, _ctx);
+                model.BoardSummary = (IEnumerable<BoardSummary>)GetItemDetails("BoardSummary", id, _ctx);
+                model.CapacityNeedsSummary = (CapacityNeedsSummary)GetItemDetails("CapacityNeedsSummary", id, _ctx);
+                model.ExpectedChangesSummary = (ExpectedChangesSummary)GetItemDetails("ExpectedChangesSummary", id, _ctx);
+                model.FinancialInfoSummary = (FinancialInfoSummary)GetItemDetails("FinancialInfoSummary", id, _ctx);
+                model.GrantInfoSummary = (GrantInfoSummary)GetItemDetails("GrantInfoSummary", id, _ctx);
+                model.GrantRequestInfoSummary = (GrantRequestInfoSummary)GetItemDetails("GrantRequestInfoSummary", id, _ctx);
+                model.InternalControlsSummary = (InternalControlsSummary)GetItemDetails("InternalControlsSummary", id, _ctx);
+                model.MandESummary = (MandESummary)GetItemDetails("MandESummary", id, _ctx);
+                model.ProjectSummary = (ProjectSummary)GetItemDetails("ProjectSummary", id, _ctx);
+                model.RiskAssessmentSummary = (RiskAssessmentSummary)GetItemDetails("RiskAssessmentSummary", id, _ctx);
+                model.StaffSummary = (IEnumerable<StaffSummary>)GetItemDetails("StaffSummary", id, _ctx);
+
+                if (model == null)
+                {
+                    return HttpNotFound();
+                }
+
+                Session["grantSummaryData"] = model;
+
+                return View("GrantSummary", model);
+            }
+            else
+            {
+                // we have a GrantSummary object in the Session
+                // so let's just get it and return the view with the data
+
+                return View("GrantSummary", (GrantSummary)Session["grantSummaryData"]);
+            }
         }
 
         [HttpPost]
-        public ActionResult GrantSummary(long id)
+        public ActionResult GrantSummary(GrantSummary grantSummary)
         {
             var identityName = Thread.CurrentPrincipal.Identity.Name;
             string errorParam = string.Empty;
+
+            var grantId = grantSummary.GrantInfoSummary.GrantId;
 
             string grantNotesJson = Request.Form["grantNotesJson"];
             _sectionNotes = JsonConvert.DeserializeObject<HashSet<SectionNote>>(grantNotesJson);
@@ -117,7 +146,7 @@ namespace SBAdmin.Controllers
                 DataRow row = sectionNotesDt.NewRow();
 
                 // populate the grant id column
-                row[0] = id;
+                row[0] = grantId;
 
                 // iterate over the collection of notes 
                 foreach (var note in _sectionNotes)
@@ -164,6 +193,11 @@ namespace SBAdmin.Controllers
                 }
 
                 // send the data back to the workflow to send back to the grantee
+            }
+
+            if (Session["grantSummaryData"] != null)
+            {
+                return View("GrantSummary", (GrantSummary)Session["grantSummaryData"]);
             }
 
             return View();
@@ -313,6 +347,15 @@ namespace SBAdmin.Controllers
             {
                 throw ex;
             }
+        }
+
+        private PODashboardSummary GetPODashboardData()
+        {
+            if (Session["poDashboardData"] == null)
+            {
+                Session["poDashboardData"] = new PODashboardSummary();
+            }
+            return (PODashboardSummary)Session["poDashboardData"];
         }
 
         #endregion  

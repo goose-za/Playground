@@ -1,13 +1,15 @@
 ﻿@using Newtonsoft.Json
 @using SBAdmin.Models
 
-@model SBAdmin.Models.GrantSummary
+@model GrantSummary
 
 @{
     ViewBag.Title = "Grant Summary";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@using (Html.BeginForm())
+{
 <!-- Page Heading -->
 <div class="row">
     <div class="col-lg-12">
@@ -29,6 +31,7 @@
     <div>
         <div class="row">
             <div class="col-lg-12">
+                @Html.HiddenFor(model => model.GrantInfoSummary.GrantId)
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <h4 class="panel-title"><i class="fas fa-project-diagram" style="margin-right:10px;"></i>Project Summary</h4>
@@ -117,18 +120,10 @@
                         </span>
                         <div class="clearfix"></div>
                         <div class="collapse" id="collapseProjectSummary">
-                            <form class="form-horizontal" 
-                                  id="projectSummaryNote" 
-                                  name="projectSummaryNote" 
-                                  style="padding-top: 10px;">
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        <textarea class="form-control" id="projectSummaryNote" name="projectSummaryNote" rows="3" placeholder="Add new query"></textarea>
-                                        <br />
-                                        <a class="btn btn-success" id="btnProjectSummaryNote" href="#" role="button" onclick="AddNote(1, '#btnProjectSummaryNote')">Add note ...</a>
-                                    </div>
-                                </div>
-                            </form>                            
+                            <br/>
+                            <textarea class="form-control" id="projectSummaryNote1" name="projectSummaryNote1" rows="3" placeholder="Add new query"></textarea>
+                            <br />
+                            <a class="btn btn-success" id="btnProjectSummaryNote" href="#" role="button" onclick="AddNote(1, '#projectSummaryNote1')">Add note ...</a>                         
                         </div>
                     </div>
                 </div>
@@ -191,16 +186,16 @@
                         </span>
                         <div class="clearfix"></div>
                         <div class="collapse" id="collapseGrantRequestInformationSummary">
-                            <form class="form-horizontal"
+                            @*<form class="form-horizontal"
                                   id="grantRequestInformationSummaryNote"
                                   name="grantRequestInformationSummaryNote"
-                                  style="padding-top: 10px;">
+                                  style="padding-top: 10px;">*@
                                 <div class="form-group">
                                     <div class="col-lg-12">
                                         <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
                                     </div>
                                 </div>
-                            </form>
+                            @*</form>*@
                         </div>
                     </div>
                 </div>
@@ -457,16 +452,16 @@
                         </span>
                         <div class="clearfix"></div>
                         <div class="collapse" id="collapseBeneficiarySummary">
-                            <form class="form-horizontal"
+                            @*<form class="form-horizontal"
                                   id="beneficiarySummaryNote"
                                   name="beneficiarySummaryNoteNote"
-                                  style="padding-top: 10px;">
+                                  style="padding-top: 10px;">*@
                                 <div class="form-group">
                                     <div class="col-lg-12">
                                         <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
                                     </div>
                                 </div>
-                            </form>
+                            @*</form>*@
                         </div>
                     </div>
                 </div>
@@ -569,16 +564,16 @@
                         </span>
                         <div class="clearfix"></div>
                         <div class="collapse" id="collapseExpectedChangesSummary">
-                            <form class="form-horizontal"
+                            @*<form class="form-horizontal"
                                   id="expectedChangesSummaryNote"
                                   name="expectedChangesSummaryNote"
-                                  style="padding-top: 10px;">
+                                  style="padding-top: 10px;">*@
                                 <div class="form-group">
                                     <div class="col-lg-12">
                                         <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
                                     </div>
                                 </div>
-                            </form>
+                            @*</form>*@
                         </div>
                     </div>
                 </div>
@@ -653,16 +648,16 @@
                         </span>
                         <div class="clearfix"></div>
                         <div class="collapse" id="collapseCapacityNeedsSummary">
-                            <form class="form-horizontal"
+                            @*<form class="form-horizontal"
                                   id="capacityNeedsSummaryNote"
                                   name="capacityNeedsSummaryNote"
-                                  style="padding-top: 10px;">
+                                  style="padding-top: 10px;">*@
                                 <div class="form-group">
                                     <div class="col-lg-12">
                                         <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
                                     </div>
                                 </div>
-                            </form>
+                            @*</form>*@
                         </div>
                     </div>
                 </div>
@@ -890,16 +885,16 @@
                         </span>
                         <div class="clearfix"></div>
                         <div class="collapse" id="collapseRiskAssessmentSummary">
-                            <form class="form-horizontal"
+                            @*<form class="form-horizontal"
                                   id="riskAssessmentSummaryNote"
                                   name="riskAssessmentSummaryNote"
-                                  style="padding-top: 10px;">
+                                  style="padding-top: 10px;">*@
                                 <div class="form-group">
                                     <div class="col-lg-12">
                                         <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
                                     </div>
                                 </div>
-                            </form>
+                            @*</form>*@
                         </div>
                     </div>
                 </div>
@@ -947,16 +942,16 @@
                         </span>
                         <div class="clearfix"></div>
                         <div class="collapse" id="collapseMandESummary">
-                            <form class="form-horizontal"
+                            @*<form class="form-horizontal"
                                   id="mandESummaryNote"
                                   name="mandESummaryNote"
-                                  style="padding-top: 10px;">
+                                  style="padding-top: 10px;">*@
                                 <div class="form-group">
                                     <div class="col-lg-12">
                                         <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
                                     </div>
                                 </div>
-                            </form>
+                            @*</form>*@
                         </div>
                     </div>
                 </div>
@@ -1009,16 +1004,16 @@
                         </span>
                         <div class="clearfix"></div>
                         <div class="collapse" id="collapseFinancialInformationSummary">
-                            <form class="form-horizontal"
+                            @*<form class="form-horizontal"
                                   id="financialInformationSummaryNote"
                                   name="financialInformationSummaryNote"
-                                  style="padding-top: 10px;">
+                                  style="padding-top: 10px;">*@
                                 <div class="form-group">
                                     <div class="col-lg-12">
                                         <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
                                     </div>
                                 </div>
-                            </form>
+                            @*</form>*@
                         </div>
                     </div>
                 </div>
@@ -1106,16 +1101,16 @@
                         </span>
                         <div class="clearfix"></div>
                         <div class="collapse" id="collapseGovernanceAndHRSummary">
-                            <form class="form-horizontal"
+                            @*<form class="form-horizontal"
                                   id="governanceAndHRSummaryNote"
                                   name="governanceAndHRSummaryNote"
-                                  style="padding-top: 10px;">
+                                  style="padding-top: 10px;">*@
                                 <div class="form-group">
                                     <div class="col-lg-12">
                                         <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
                                     </div>
                                 </div>
-                            </form>
+                            @*</form>*@
                         </div>
                     </div>
                 </div>
@@ -1218,16 +1213,16 @@
                         </span>
                         <div class="clearfix"></div>
                         <div class="collapse" id="collapseAccountingRecordsSummary">
-                            <form class="form-horizontal"
+                            @*<form class="form-horizontal"
                                   id="accountingRecordsSummaryNote"
                                   name="accountingRecordsSummaryNote"
-                                  style="padding-top: 10px;">
+                                  style="padding-top: 10px;">*@
                                 <div class="form-group">
                                     <div class="col-lg-12">
                                         <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
                                     </div>
                                 </div>
-                            </form>
+                            @*</form>*@
                         </div>
                     </div>
                 </div>
@@ -1512,16 +1507,16 @@
                         </span>
                         <div class="clearfix"></div>
                         <div class="collapse" id="collapseInternalControlsSummary">
-                            <form class="form-horizontal"
+                            @*<form class="form-horizontal"
                                   id="internalControlsSummaryNote"
                                   name="internalControlsSummaryNote"
-                                  style="padding-top: 10px;">
+                                  style="padding-top: 10px;">*@
                                 <div class="form-group">
                                     <div class="col-lg-12">
                                         <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
                                     </div>
                                 </div>
-                            </form>
+                            @*</form>*@
                         </div>
                     </div>
                 </div>
@@ -1539,14 +1534,18 @@
         <div class="row">
             <div class="col-lg-12">
                 <p>
+                    <input class="btn btn-primary" type="submit" name="btnSubmitNotes" id="btnSubmitNotes" value='Submit' />
+                </p>
+                <p>
                     @Html.ActionLink("Back to Dashboard", "Index")
                 </p>
             </div>
         </div>
     </div>
 </section>
-
-@section localscripts
+            
+@section scripts
 {
     <script src="~/js/site.js"></script>
+}
 }

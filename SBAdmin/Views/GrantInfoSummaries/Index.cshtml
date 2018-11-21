@@ -1,46 +1,170 @@
-﻿@model IEnumerable<SBAdmin.Models.GrantInfoSummary>
+﻿@model SBAdmin.Models.PODashboardSummary
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Organisation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RequestReason)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProjectObjectives)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Organisation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RequestReason)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProjectObjectives)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.GrantId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.GrantId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.GrantId })
-        </td>
-    </tr>
+@section styles{
+    <link href="@Url.Content("~/css//morris.css")" rel="stylesheet" />
 }
 
-</table>
+<!-- Page Heading -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Program Officer Dashboard
+        </h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Home")">Home</a>
+            </li>
+            <li class="breadcrumb-item active">
+                Dashboard
+            </li>
+        </ol>
+    </div>
+</div>
+<!-- /.row -->
+
+<div class="row">
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3 card-body-icon">
+                        <i class="fas fa-file-invoice-dollar fa-2x"></i>
+                    </div>
+                    <div class="col-xs-9 text-left">
+                        <div class="huge">@Html.DisplayFor(model => model.GrantTotals.GrantTotal)</div>
+                        <div>Total Grants</div>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3 card-body-icon">
+                        <i class="fas fa-folder-plus fa-2x"></i>
+                    </div>
+                    <div class="col-xs-9 text-left">
+                        <div class="huge">@Html.DisplayFor(model => model.GrantTotals.New)</div>
+                        <div>New Grants</div>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-yellow">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3 card-body-icon">
+                        <i class="fas fa-tasks fa-2x"></i>
+                    </div>
+                    <div class="col-xs-9 text-left">
+                        <div class="huge">@Html.DisplayFor(model => model.GrantTotals.InProgress)</div>
+                        <div>In Process Grants</div>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3 card-body-icon">
+                        <i class="fas fa-pause fa-2x"></i>
+                    </div>
+                    <div class="col-xs-9 text-left">
+                        <div class="huge">@Html.DisplayFor(model => model.GrantTotals.Pending)</div>
+                        <div>Pending Grants</div>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fas fa-hand-holding-usd"></i>&nbsp;&nbsp;&nbsp;Current Grant Summary</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered table-condensed table-responsive table-striped table-hover">
+                    <tr>
+                        <th>Grant ID</th>
+                        <th>Organisation</th>
+                        <th>Reason for Request</th>
+                        <th>Project Objectives</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model.GrantInfoSummary)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.GrantId)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Organisation)</td>
+                            <td>@Html.DisplayFor(modelItem => item.RequestReason)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ProjectObjectives)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                            <td>@Html.ActionLink("Details", "Details", new { id = item.GrantId })</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /.row -->
+<!-- sticky footer -->
+<footer class="sticky-footer">
+    <div class="container my-auto">
+        <div class="fa-copyright text-center my-auto">
+            Copyright &copy; AWDF 2018
+        </div>
+    </div>
+</footer>
+
+@section scripts{
+    <script src="@Url.Content("~/js/plugins/morris/raphael.min.js")"></script>
+    <script src="@Url.Content("~/js/plugins/morris/morris.js")"></script>
+    <script src="@Url.Content("~/js/plugins/morris/morris-data.js")"></script>
+}
