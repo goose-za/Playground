@@ -26,4 +26,7 @@ function AddNote(sectionId, controlName) {
         // encode the updated array and save the data to the hidden control
         $("#grantNotesJson").val(JSON.stringify(existingData));
     }
+
+    // clear the control
+    $(controlName).val("");
 }

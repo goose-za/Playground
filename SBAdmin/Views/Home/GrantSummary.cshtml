@@ -10,1542 +10,1482 @@
 
 @using (Html.BeginForm())
 {
-<!-- Page Heading -->
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">
-            @ViewBag.Title
-        </h1>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="@Url.Action("Index", "Home")">Home</a>
-            </li>
-            <li class="breadcrumb-item active">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
                 @ViewBag.Title
-            </li>
-        </ol>
+            </h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="@Url.Action("Index", "Home")">Home</a>
+                </li>
+                <li class="breadcrumb-item active">
+                    @ViewBag.Title
+                </li>
+            </ol>
+        </div>
     </div>
-</div>
-<!-- /.row -->
-<section id="content">
-    <div>
-        <div class="row">
-            <div class="col-lg-12">
-                @Html.HiddenFor(model => model.GrantInfoSummary.GrantId)
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fas fa-project-diagram" style="margin-right:10px;"></i>Project Summary</h4>
-                    </div>
-                    <div class="panel-body">
-                        <dl class="">
-                            <dt>
-                                @Html.DisplayNameFor(model => model.ProjectSummary.Organisation)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.ProjectSummary.Organisation)                                
-                            </dd>
+    <!-- /.row -->
+    <section id="content">
+        <div>
+            <div class="row">
+                <div class="col-lg-12">
+                    @Html.HiddenFor(model => model.GrantInfoSummary.GrantId)
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 id="ProjectSummary" class="panel-title"><i class="fas fa-project-diagram" style="margin-right:10px;"></i>Project Summary</h4>
+                        </div>
+                        <div class="panel-body">
+                            <dl class="">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProjectSummary.Organisation)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.ProjectSummary.Organisation)                                
+                                </dd>
 
-                            <dt>
-                                @Html.DisplayNameFor(model => model.ProjectSummary.ProjectTitle)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.ProjectSummary.ProjectTitle)
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProjectSummary.ProjectTitle)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.ProjectSummary.ProjectTitle)
+                                    <br/>
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProjectSummary.Country)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.ProjectSummary.Country)
+                                    <br />
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProjectSummary.RequestedAmount)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    $@Html.DisplayFor(model => model.ProjectSummary.RequestedAmount)
+                                    <br />
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProjectSummary.ProjectDuration)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.ProjectSummary.ProjectDuration)&nbsp;(years)
+                                    <br />
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProjectSummary.Theme)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.ProjectSummary.Theme)
+                                    <br />
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProjectSummary.ApplicationDate)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.ProjectSummary.ApplicationDate)
+                                    <br />
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProjectSummary.IsAnonymousGrant)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.ProjectSummary.IsAnonymousGrant)
+                                    <br />
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProjectSummary.AnnonymousReason)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.ProjectSummary.AnnonymousReason)
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="panel-footer">
+                            <span class="pull-left">
+                                <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                                <a data-toggle="collapse" 
+                                   href="#collapseProjectSummary" 
+                                   aria-expanded="false" 
+                                   aria-controls="collapseProjectSummary">Add note
+                                </a>
+                            </span>
+                            <div class="clearfix"></div>
+                            <div class="collapse" id="collapseProjectSummary">
                                 <br/>
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.ProjectSummary.Country)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.ProjectSummary.Country)
+                                <textarea class="form-control" id="projectSummaryNote" name="projectSummaryNote" rows="3" placeholder="Add new query"></textarea>
                                 <br />
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.ProjectSummary.RequestedAmount)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                $@Html.DisplayFor(model => model.ProjectSummary.RequestedAmount)
-                                <br />
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.ProjectSummary.ProjectDuration)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.ProjectSummary.ProjectDuration)&nbsp;(years)
-                                <br />
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.ProjectSummary.Theme)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.ProjectSummary.Theme)
-                                <br />
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.ProjectSummary.ApplicationDate)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.ProjectSummary.ApplicationDate)
-                                <br />
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.ProjectSummary.IsAnonymousGrant)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.ProjectSummary.IsAnonymousGrant)
-                                <br />
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.ProjectSummary.AnnonymousReason)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.ProjectSummary.AnnonymousReason)
-                            </dd>
-                        </dl>
+                                <a class="btn btn-success" id="btnProjectSummaryNote" href="#ProjectSummary" role="button" onclick="AddNote(1, '#projectSummaryNote')">Add note ...</a>                         
+                            </div>
+                        </div>
                     </div>
-                    <div class="panel-footer">
-                        <span class="pull-left">
-                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
-                            <a data-toggle="collapse" 
-                               href="#collapseProjectSummary" 
-                               aria-expanded="false" 
-                               aria-controls="collapseProjectSummary">Add note
-                            </a>
-                        </span>
-                        <div class="clearfix"></div>
-                        <div class="collapse" id="collapseProjectSummary">
-                            <br/>
-                            <textarea class="form-control" id="projectSummaryNote1" name="projectSummaryNote1" rows="3" placeholder="Add new query"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 id="GrantRequestInformationSummary" class="panel-title"><i class="fas fa-file-invoice-dollar" style="margin-right:10px;"></i>Grant Request Information Summary</h4>
+                        </div>
+                        <div class="panel-body">
+                            <dl>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.GrantRequestInfoSummary.RequestReason)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.GrantRequestInfoSummary.RequestReason)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.GrantRequestInfoSummary.ProjectObjectives)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.GrantRequestInfoSummary.ProjectObjectives)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.GrantRequestInfoSummary.ProjectContributions)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.GrantRequestInfoSummary.ProjectContributions)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.GrantRequestInfoSummary.Challenges)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.GrantRequestInfoSummary.Challenges)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.GrantRequestInfoSummary.Activities)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.GrantRequestInfoSummary.Activities)
+                                </dd>
+
+                            </dl>
+                        </div>
+                        <div class="panel-footer">
+                            <span class="pull-left">
+                                <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                                <a data-toggle="collapse"
+                                   href="#collapseGrantRequestInformationSummary"
+                                   aria-expanded="false"
+                                   aria-controls="collapseGrantRequestInformationSummary">
+                                    Add note
+                                </a>
+                            </span>
+                            <div class="clearfix"></div>
+                            <div class="collapse" id="collapseGrantRequestInformationSummary">
+                                <br />
+                                <textarea class="form-control" id="grantRequestInformationSummaryNote" name="grantRequestInformationSummaryNote" rows="3" placeholder="Add new query"></textarea>
+                                <br />
+                                <a class="btn btn-success" id="btnGrantRequestInformationSummaryNote" href="#GrantRequestInformationSummary" role="button" onclick="AddNote(2, '#grantRequestInformationSummaryNote')">Add note ...</a>                         
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 id="BeneficiarySummary" class="panel-title"><i class="fas fa-users" style="margin-right:10px;"></i>Beneficiary Summary</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>What category(ies) of women will you be working with and how many per category? Please indicate below.</p>
+                            <table class="table table-bordered table-condensed table-responsive table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Benficiary Categories</th>
+                                        <th class="col-md-1">Number</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenAndGirlsInGeneral)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenAndGirlsInGeneral)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomensRightsActivistsDefenders)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomensRightsActivistsDefenders)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenEntrepreneursBusinessWomen)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenEntrepreneursBusinessWomen)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenLivingWithHIV)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenLivingWithHIV)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenWithDisabilities)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenWithDisabilities)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenSexWorkers)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenSexWorkers)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.IndigenousEthnicMinorityWomen)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.IndigenousEthnicMinorityWomen)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.LesbianBisexualTransgenderWomen)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.LesbianBisexualTransgenderWomen)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.Widows)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.Widows)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.OrphansAndVulnerableGirls)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.OrphansAndVulnerableGirls)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.OutOfSchoolGirls)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.OutOfSchoolGirls)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.MarginalisedRuralWomenAndGirls)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.MarginalisedRuralWomenAndGirls)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.MarginalisedUrbanWomenAndGirls)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.MarginalisedUrbanWomenAndGirls)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenAndGirlRefugeesInternallyDisplacedAsylumSeekers)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenAndGirlRefugeesInternallyDisplacedAsylumSeekers)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenInTheArtsCreativeSectors)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenInTheArtsCreativeSectors)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenInPoliticsAndDecisionMaking)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenInPoliticsAndDecisionMaking)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenInMedia)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenInMedia)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenTraditionalLeaders)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenTraditionalLeaders)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenInTechnology)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenInTechnology)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenInMiningAffectedCommunities)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenInMiningAffectedCommunities)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenInAgricultureFarming)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenInAgricultureFarming)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenGirlSurvivorsOfViolence)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenGirlSurvivorsOfViolence)</td>
+                                    </tr>
+                                    <tr class="info">
+                                        <td><strong>@Html.DisplayNameFor(model => model.BeneficiarySummary.TotalBeneficiaries)</strong></td>
+                                        <td><strong>@Html.DisplayFor(model => model.BeneficiarySummary.TotalBeneficiaries)</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
                             <br />
-                            <a class="btn btn-success" id="btnProjectSummaryNote" href="#" role="button" onclick="AddNote(1, '#projectSummaryNote1')">Add note ...</a>                         
+                            <p>
+                                How many people do you estimate will benefit directly from this project? 
+                                Direct beneficiaries are the individuals who participated or benefited from 
+                                the project activities (inclusive of your membership, people directly served 
+                                by or enrolled in your programs, among others).
+                            </p>
+                            <table class="table table-bordered table-condensed table-responsive table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th class="col-md-1">Number</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.GirlsAndAdolescentGirls)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.GirlsAndAdolescentGirls)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.YoungWomen)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.YoungWomen)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.Women)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.Women)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.BoysAndAdolescentBoys)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.BoysAndAdolescentBoys)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.YoungMen)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.YoungMen)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.Men)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.Men)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.TransOrIntersexYouthOrAdults)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.TransOrIntersexYouthOrAdults)</td>
+                                    </tr>
+                                    <tr class="info">
+                                        <td><strong>@Html.DisplayNameFor(model => model.BeneficiarySummary.TotalDirectBeneficiaries)</strong></td>
+                                        <td><strong>@Html.DisplayFor(model => model.BeneficiarySummary.TotalDirectBeneficiaries)</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <br />
+                            <p>
+                                How many people do you estimate will benefit indirectly from this project?
+                                Indirect beneficiaries are people who may benefit from or will be reached
+                                by the project activities (but will not directly be served by or enrolled
+                                in the programs).
+                            </p>
+                            <table class="table table-bordered table-condensed table-responsive table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Indirect Beneficiaries</th>
+                                        <th class="col-md-1">Number</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.CommunityBasedOrganisations)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.CommunityBasedOrganisations)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.EducationProfessionals)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.EducationProfessionals)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.FaithBasedLeaders)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.FaithBasedLeaders)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.GovernmentOfficials)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.GovernmentOfficials)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.HealthProfessionals)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.HealthProfessionals)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.CivilSocietyOrganisations)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.CivilSocietyOrganisations)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.JournalistsMedia)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.JournalistsMedia)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.LegalOfficers)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.LegalOfficers)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenAndOrGirls)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenAndOrGirls)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.MenAndOrBoys)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.MenAndOrBoys)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.Parliamentarians)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.Parliamentarians)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.SocialWelfareWorkers)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.SocialWelfareWorkers)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.SecuritySectorPersonnel)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.SecuritySectorPersonnel)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.OthersSecondaryBeneficiaries)</td>
+                                        <td>@Html.DisplayFor(model => model.BeneficiarySummary.OthersSecondaryBeneficiaries)</td>
+                                    </tr>
+                                    <tr class="info">
+                                        <td><strong>@Html.DisplayNameFor(model => model.BeneficiarySummary.TotalSecondaryBeneficiaries)</strong></td>
+                                        <td><strong>@Html.DisplayFor(model => model.BeneficiarySummary.TotalSecondaryBeneficiaries)</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="panel-footer">
+                            <span class="pull-left">
+                                <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                                <a data-toggle="collapse"
+                                   href="#collapseBeneficiarySummary"
+                                   aria-expanded="false"
+                                   aria-controls="collapseBeneficiarySummary">
+                                    Add note
+                                </a>
+                            </span>
+                            <div class="clearfix"></div>
+                            <div class="collapse" id="collapseBeneficiarySummary">
+                                <br />
+                                <textarea class="form-control" id="beneficiarySummaryNote" name="beneficiarySummaryNote" rows="3" placeholder="Add new query"></textarea>
+                                <br />
+                                <a class="btn btn-success" id="btnBeneficiarySummaryNote" href="#BeneficiarySummary" role="button" onclick="AddNote(3, '#beneficiarySummaryNote')">Add note ...</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fas fa-file-invoice-dollar" style="margin-right:10px;"></i>Grant Request Information Summary</h4>
-                    </div>
-                    <div class="panel-body">
-                        <dl>
-                            <dt>
-                                @Html.DisplayNameFor(model => model.GrantRequestInfoSummary.RequestReason)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.GrantRequestInfoSummary.RequestReason)
-                            </dd>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 id="ExpectedChangesSummary" class="panel-title"><i class="fas fa-exchange-alt" style="margin-right:10px;"></i>Expected Changes Summary</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                What changes (outputs) do you aim to contribute to by 
+                                the end of the project?
+                            </p>
+                            <p>@Html.DisplayFor(model => model.ExpectedChangesSummary.Outputs)</p>
 
-                            <dt>
-                                @Html.DisplayNameFor(model => model.GrantRequestInfoSummary.ProjectObjectives)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.GrantRequestInfoSummary.ProjectObjectives)
-                            </dd>
+                            <br />
+                            <p>
+                                What changes (outcomes) do you aim to contribute
+                                to for the issue as a whole?
+                            </p>
+                            <br/>
 
-                            <dt>
-                                @Html.DisplayNameFor(model => model.GrantRequestInfoSummary.ProjectContributions)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.GrantRequestInfoSummary.ProjectContributions)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.GrantRequestInfoSummary.Challenges)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.GrantRequestInfoSummary.Challenges)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.GrantRequestInfoSummary.Activities)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.GrantRequestInfoSummary.Activities)
-                            </dd>
-
-                        </dl>
-                    </div>
-                    <div class="panel-footer">
-                        <span class="pull-left">
-                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
-                            <a data-toggle="collapse"
-                               href="#collapseGrantRequestInformationSummary"
-                               aria-expanded="false"
-                               aria-controls="collapseGrantRequestInformationSummary">
-                                Add note
-                            </a>
-                        </span>
-                        <div class="clearfix"></div>
-                        <div class="collapse" id="collapseGrantRequestInformationSummary">
-                            @*<form class="form-horizontal"
-                                  id="grantRequestInformationSummaryNote"
-                                  name="grantRequestInformationSummaryNote"
-                                  style="padding-top: 10px;">*@
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
-                                    </div>
-                                </div>
-                            @*</form>*@
+                            <table class="table table-condensed table-responsive">
+                                <tr>
+                                    <td colspan="2" class="info">@Html.DisplayNameFor(model => model.ExpectedChangesSummary.VAWEliminated)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.VAWEliminated)</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.RightsToBodilyIntegrity)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.RightsToBodilyIntegrity)</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.AccessNecessarySupport)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.AccessNecessarySupport)</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.IncreasingSupportOfVAW)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.IncreasingSupportOfVAW)</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.LawsAndPoliciesToPreventAndRespondToVAW)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.LawsAndPoliciesToPreventAndRespondToVAW)</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="info">@Html.DisplayNameFor(model => model.ExpectedChangesSummary.EconomicRightsAndJusticeForWomenProtected)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.EconomicRightsAndJusticeForWomenProtected)</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.AwareOfLabourAndEconomicRights)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.AwareOfLabourAndEconomicRights)</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.RecogniseAfricanWomensEconomicContributions)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.RecogniseAfricanWomensEconomicContributions)</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.PoliciesAndLawsToProtectWomensEconomicRights)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.PoliciesAndLawsToProtectWomensEconomicRights)</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="info">@Html.DisplayNameFor(model => model.ExpectedChangesSummary.ParticipationOfWomenSustained)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.ParticipationOfWomenSustained)</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.AwarenessOfGenderedChallenges)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.AwarenessOfGenderedChallenges)</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.ParticipationInPolicyAndDecisionMakingProcesses)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.ParticipationInPolicyAndDecisionMakingProcesses)</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.LawsAndPoliciesForAfricanWomensPoliticalRights)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.LawsAndPoliciesForAfricanWomensPoliticalRights)</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="panel-footer">
+                            <span class="pull-left">
+                                <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                                <a data-toggle="collapse"
+                                   href="#collapseExpectedChangesSummary"
+                                   aria-expanded="false"
+                                   aria-controls="collapseExpectedChangesSummary">
+                                    Add note
+                                </a>
+                            </span>
+                            <div class="clearfix"></div>
+                            <div class="collapse" id="collapseExpectedChangesSummary">
+                                <br />
+                                <textarea class="form-control" id="expectedChangesSummaryNote" name="expectedChangesSummaryNote" rows="3" placeholder="Add new query"></textarea>
+                                <br />
+                                <a class="btn btn-success" id="btnExpectedChangesSummaryNote" href="#ExpectedChangesSummary" role="button" onclick="AddNote(4, '#expectedChangesSummaryNote')">Add note ...</a>                         
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fas fa-users" style="margin-right:10px;"></i>Beneficiary Summary</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>What category(ies) of women will you be working with and how many per category? Please indicate below.</p>
-                        <table class="table table-bordered table-condensed table-responsive table-striped">
-                            <thead>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 id="CapacityNeedsSummary" class="panel-title"><i class="fa fa-chalkboard-teacher" style="margin-right:10px;"></i>Capacity Needs Summary</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="alert alert-success" role="alert">
+                                <i class="fas fa-exclamation-triangle"></i>&nbsp; &nbsp; &nbsp; All successful applicants will engage in a capacity needs
+                                assessment and may receive follow up capacity buildig technical 
+                                and financial support as needed.
+                            </div>
+                            <br />
+                            <p>
+                                From the list below, in which areas do you need capacity building 
+                                support in order to achieve your organisation's/project objectives?
+                            </p>
+                            <br />
+                            <table class="table table-condensed table-responsive">
                                 <tr>
-                                    <th>Benficiary Categories</th>
-                                    <th class="col-md-1">Number</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenAndGirlsInGeneral)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenAndGirlsInGeneral)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomensRightsActivistsDefenders)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomensRightsActivistsDefenders)</td>
+                                    <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.SystemsDevelopment)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.SystemsDevelopment)</td>
                                 </tr>
                                 <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenEntrepreneursBusinessWomen)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenEntrepreneursBusinessWomen)</td>
+                                    <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.GovernanceStrengthening)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.GovernanceStrengthening)</td>
                                 </tr>
                                 <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenLivingWithHIV)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenLivingWithHIV)</td>
+                                    <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.OrganisationalStepChange)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.OrganisationalStepChange)</td>
                                 </tr>
                                 <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenWithDisabilities)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenWithDisabilities)</td>
+                                    <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.Fundraising)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.Fundraising)</td>
                                 </tr>
                                 <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenSexWorkers)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenSexWorkers)</td>
+                                    <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.HRandStaffing)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.HRandStaffing)</td>
                                 </tr>
                                 <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.IndigenousEthnicMinorityWomen)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.IndigenousEthnicMinorityWomen)</td>
+                                    <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.FinancialManagement)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.FinancialManagement)</td>
                                 </tr>
                                 <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.LesbianBisexualTransgenderWomen)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.LesbianBisexualTransgenderWomen)</td>
+                                    <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.MonitoringLearningAndEvaluation)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.MonitoringLearningAndEvaluation)</td>
                                 </tr>
                                 <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.Widows)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.Widows)</td>
+                                    <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.MarketingAndCommunication)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.MarketingAndCommunication)</td>
                                 </tr>
                                 <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.OrphansAndVulnerableGirls)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.OrphansAndVulnerableGirls)</td>
+                                    <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.CommunityOutreachAndNetworking)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.CommunityOutreachAndNetworking)</td>
                                 </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.OutOfSchoolGirls)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.OutOfSchoolGirls)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.MarginalisedRuralWomenAndGirls)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.MarginalisedRuralWomenAndGirls)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.MarginalisedUrbanWomenAndGirls)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.MarginalisedUrbanWomenAndGirls)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenAndGirlRefugeesInternallyDisplacedAsylumSeekers)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenAndGirlRefugeesInternallyDisplacedAsylumSeekers)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenInTheArtsCreativeSectors)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenInTheArtsCreativeSectors)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenInPoliticsAndDecisionMaking)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenInPoliticsAndDecisionMaking)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenInMedia)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenInMedia)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenTraditionalLeaders)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenTraditionalLeaders)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenInTechnology)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenInTechnology)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenInMiningAffectedCommunities)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenInMiningAffectedCommunities)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenInAgricultureFarming)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenInAgricultureFarming)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenGirlSurvivorsOfViolence)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenGirlSurvivorsOfViolence)</td>
-                                </tr>
-                                <tr class="info">
-                                    <td><strong>@Html.DisplayNameFor(model => model.BeneficiarySummary.TotalBeneficiaries)</strong></td>
-                                    <td><strong>@Html.DisplayFor(model => model.BeneficiarySummary.TotalBeneficiaries)</strong></td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <br />
-                        <p>
-                            How many people do you estimate will benefit directly from this project? 
-                            Direct beneficiaries are the individuals who participated or benefited from 
-                            the project activities (inclusive of your membership, people directly served 
-                            by or enrolled in your programs, among others).
-                        </p>
-                        <table class="table table-bordered table-condensed table-responsive table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Category</th>
-                                    <th class="col-md-1">Number</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.GirlsAndAdolescentGirls)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.GirlsAndAdolescentGirls)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.YoungWomen)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.YoungWomen)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.Women)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.Women)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.BoysAndAdolescentBoys)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.BoysAndAdolescentBoys)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.YoungMen)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.YoungMen)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.Men)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.Men)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.TransOrIntersexYouthOrAdults)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.TransOrIntersexYouthOrAdults)</td>
-                                </tr>
-                                <tr class="info">
-                                    <td><strong>@Html.DisplayNameFor(model => model.BeneficiarySummary.TotalDirectBeneficiaries)</strong></td>
-                                    <td><strong>@Html.DisplayFor(model => model.BeneficiarySummary.TotalDirectBeneficiaries)</strong></td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <br />
-                        <p>
-                            How many people do you estimate will benefit indirectly from this project?
-                            Indirect beneficiaries are people who may benefit from or will be reached
-                            by the project activities (but will not directly be served by or enrolled
-                            in the programs).
-                        </p>
-                        <table class="table table-bordered table-condensed table-responsive table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Indirect Beneficiaries</th>
-                                    <th class="col-md-1">Number</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.CommunityBasedOrganisations)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.CommunityBasedOrganisations)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.EducationProfessionals)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.EducationProfessionals)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.FaithBasedLeaders)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.FaithBasedLeaders)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.GovernmentOfficials)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.GovernmentOfficials)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.HealthProfessionals)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.HealthProfessionals)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.CivilSocietyOrganisations)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.CivilSocietyOrganisations)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.JournalistsMedia)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.JournalistsMedia)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.LegalOfficers)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.LegalOfficers)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.WomenAndOrGirls)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.WomenAndOrGirls)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.MenAndOrBoys)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.MenAndOrBoys)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.Parliamentarians)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.Parliamentarians)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.SocialWelfareWorkers)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.SocialWelfareWorkers)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.SecuritySectorPersonnel)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.SecuritySectorPersonnel)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(model => model.BeneficiarySummary.OthersSecondaryBeneficiaries)</td>
-                                    <td>@Html.DisplayFor(model => model.BeneficiarySummary.OthersSecondaryBeneficiaries)</td>
-                                </tr>
-                                <tr class="info">
-                                    <td><strong>@Html.DisplayNameFor(model => model.BeneficiarySummary.TotalSecondaryBeneficiaries)</strong></td>
-                                    <td><strong>@Html.DisplayFor(model => model.BeneficiarySummary.TotalSecondaryBeneficiaries)</strong></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="panel-footer">
-                        <span class="pull-left">
-                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
-                            <a data-toggle="collapse"
-                               href="#collapseBeneficiarySummary"
-                               aria-expanded="false"
-                               aria-controls="collapseBeneficiarySummary">
-                                Add note
-                            </a>
-                        </span>
-                        <div class="clearfix"></div>
-                        <div class="collapse" id="collapseBeneficiarySummary">
-                            @*<form class="form-horizontal"
-                                  id="beneficiarySummaryNote"
-                                  name="beneficiarySummaryNoteNote"
-                                  style="padding-top: 10px;">*@
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
-                                    </div>
-                                </div>
-                            @*</form>*@
+                            </table>
+                        </div>
+                        <div class="panel-footer">
+                            <span class="pull-left">
+                                <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                                <a data-toggle="collapse"
+                                   href="#collapseCapacityNeedsSummary"
+                                   aria-expanded="false"
+                                   aria-controls="collapseCapacityNeedsSummary">
+                                    Add note
+                                </a>
+                            </span>
+                            <div class="clearfix"></div>
+                            <div class="collapse" id="collapseCapacityNeedsSummary">
+                                <br />
+                                <textarea class="form-control" id="capacityNeedsSummaryNote" name="capacityNeedsSummaryNote" rows="3" placeholder="Add new query"></textarea>
+                                <br />
+                                <a class="btn btn-success" id="btnCapacityNeedsSummaryNote" href="#CapacityNeedsSummary" role="button" onclick="AddNote(5, '#capacityNeedsSummaryNote')">Add note ...</a>  
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fas fa-exchange-alt" style="margin-right:10px;"></i>Expected Changes Summary</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>
-                            What changes (outputs) do you aim to contribute to by 
-                            the end of the project?
-                        </p>
-                        <p>@Html.DisplayFor(model => model.ExpectedChangesSummary.Outputs)</p>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 id="RiskAssessmentSummary" class="panel-title"><i class="fas fa-glasses" style="margin-right:10px;"></i>Risk Assessment Summary</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                What are the key risks associated with this proposal (dynamics or events
+                                that could lead to failure, undermine the gains or become threats)? How 
+                                do you intend to prevent or respond to them?
+                            </p>
+                            <br />
+                            <table class="table table-bordered table-condensed table-responsive table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Potential Risks</th>
+                                        <th>Probability</th>
+                                        <th>Risk Mitigation Measures</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Financial</td>
+                                        <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.FinancialRisks)</td>
+                                        <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.FinancialRiskProbability)</td>
+                                        <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.FinancialRiskMitigationMeasures)</td>                                    
+                                    </tr>
+                                    <tr>
+                                        <td>Legal</td>
+                                        <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.LegalRisks)</td>
+                                        <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.LegalRiskProbability)</td>
+                                        <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.LegalRiskMitigationMeasures)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Political</td>
+                                        <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.PoliticalRisks)</td>
+                                        <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.PoliticalRiskProbability)</td>
+                                        <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.PoliticalRiskMitigationMeasures)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tech. &amp; Systems</td>
+                                        <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.TechSystemsRisks)</td>
+                                        <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.TechSystemsRiskProbability)</td>
+                                        <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.TechSystemsRiskMitigationMeasures)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Human Resources</td>
+                                        <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.HumanResourcesRisks)</td>
+                                        <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.HumanResourcesRiskProbability)</td>
+                                        <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.HumanResourcesRiskMitigationMeasures)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Reputation</td>
+                                        <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.ReputationRisks)</td>
+                                        <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.ReputationRiskProbability)</td>
+                                        <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.ReputationRiskMitigationMeasures)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                        <br />
-                        <p>
-                            What changes (outcomes) do you aim to contribute
-                            to for the issue as a whole?
-                        </p>
-                        <br/>
 
-                        <table class="table table-condensed table-responsive">
-                            <tr>
-                                <td colspan="2" class="info">@Html.DisplayNameFor(model => model.ExpectedChangesSummary.VAWEliminated)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.VAWEliminated)</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.RightsToBodilyIntegrity)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.RightsToBodilyIntegrity)</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.AccessNecessarySupport)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.AccessNecessarySupport)</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.IncreasingSupportOfVAW)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.IncreasingSupportOfVAW)</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.LawsAndPoliciesToPreventAndRespondToVAW)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.LawsAndPoliciesToPreventAndRespondToVAW)</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="info">@Html.DisplayNameFor(model => model.ExpectedChangesSummary.EconomicRightsAndJusticeForWomenProtected)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.EconomicRightsAndJusticeForWomenProtected)</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.AwareOfLabourAndEconomicRights)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.AwareOfLabourAndEconomicRights)</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.RecogniseAfricanWomensEconomicContributions)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.RecogniseAfricanWomensEconomicContributions)</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.PoliciesAndLawsToProtectWomensEconomicRights)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.PoliciesAndLawsToProtectWomensEconomicRights)</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="info">@Html.DisplayNameFor(model => model.ExpectedChangesSummary.ParticipationOfWomenSustained)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.ParticipationOfWomenSustained)</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.AwarenessOfGenderedChallenges)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.AwarenessOfGenderedChallenges)</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.ParticipationInPolicyAndDecisionMakingProcesses)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.ParticipationInPolicyAndDecisionMakingProcesses)</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>@Html.DisplayNameFor(model => model.ExpectedChangesSummary.LawsAndPoliciesForAfricanWomensPoliticalRights)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.ExpectedChangesSummary.LawsAndPoliciesForAfricanWomensPoliticalRights)</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="panel-footer">
-                        <span class="pull-left">
-                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
-                            <a data-toggle="collapse"
-                               href="#collapseExpectedChangesSummary"
-                               aria-expanded="false"
-                               aria-controls="collapseExpectedChangesSummary">
-                                Add note
-                            </a>
-                        </span>
-                        <div class="clearfix"></div>
-                        <div class="collapse" id="collapseExpectedChangesSummary">
-                            @*<form class="form-horizontal"
-                                  id="expectedChangesSummaryNote"
-                                  name="expectedChangesSummaryNote"
-                                  style="padding-top: 10px;">*@
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
-                                    </div>
-                                </div>
-                            @*</form>*@
+                            @*<dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RiskAssessmentSummary.FinancialRisks)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RiskAssessmentSummary.FinancialRisks)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RiskAssessmentSummary.FinancialRiskProbability)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RiskAssessmentSummary.FinancialRiskProbability)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RiskAssessmentSummary.FinancialRiskMitigationMeasures)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RiskAssessmentSummary.FinancialRiskMitigationMeasures)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RiskAssessmentSummary.LegalRisks)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RiskAssessmentSummary.LegalRisks)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RiskAssessmentSummary.LegalRiskProbability)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RiskAssessmentSummary.LegalRiskProbability)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RiskAssessmentSummary.LegalRiskMitigationMeasures)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RiskAssessmentSummary.LegalRiskMitigationMeasures)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RiskAssessmentSummary.PoliticalRisks)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RiskAssessmentSummary.PoliticalRisks)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RiskAssessmentSummary.PoliticalRiskProbability)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RiskAssessmentSummary.PoliticalRiskProbability)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RiskAssessmentSummary.PoliticalRiskMitigationMeasures)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RiskAssessmentSummary.PoliticalRiskMitigationMeasures)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RiskAssessmentSummary.TechSystemsRisks)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RiskAssessmentSummary.TechSystemsRisks)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RiskAssessmentSummary.TechSystemsRiskProbability)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RiskAssessmentSummary.TechSystemsRiskProbability)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RiskAssessmentSummary.TechSystemsRiskMitigationMeasures)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RiskAssessmentSummary.TechSystemsRiskMitigationMeasures)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RiskAssessmentSummary.HumanResourcesRisks)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RiskAssessmentSummary.HumanResourcesRisks)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RiskAssessmentSummary.HumanResourcesRiskProbability)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RiskAssessmentSummary.HumanResourcesRiskProbability)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RiskAssessmentSummary.HumanResourcesRiskMitigationMeasures)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RiskAssessmentSummary.HumanResourcesRiskMitigationMeasures)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RiskAssessmentSummary.ReputationRisks)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RiskAssessmentSummary.ReputationRisks)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RiskAssessmentSummary.ReputationRiskProbability)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RiskAssessmentSummary.ReputationRiskProbability)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RiskAssessmentSummary.ReputationRiskMitigationMeasures)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RiskAssessmentSummary.ReputationRiskMitigationMeasures)
+                                </dd>
+
+                            </dl>*@
+                        </div>
+                        <div class="panel-footer">
+                            <span class="pull-left">
+                                <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                                <a data-toggle="collapse"
+                                   href="#collapseRiskAssessmentSummary"
+                                   aria-expanded="false"
+                                   aria-controls="collapseRiskAssessmentSummary">
+                                    Add note
+                                </a>
+                            </span>
+                            <div class="clearfix"></div>
+                            <div class="collapse" id="collapseRiskAssessmentSummary">
+                                <br />
+                                <textarea class="form-control" id="riskAssessmentSummaryNote" name="riskAssessmentSummaryNote" rows="3" placeholder="Add new query"></textarea>
+                                <br />
+                                <a class="btn btn-success" id="btnRiskAssessmentSummaryNote" href="#RiskAssessmentSummary" role="button" onclick="AddNote(6, '#riskAssessmentSummaryNote')">Add note ...</a>  
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fa fa-chalkboard-teacher" style="margin-right:10px;"></i>Capacity Needs Summary</h4>
-                    </div>
-                    <div class="panel-body">
-                        <div class="alert alert-success" role="alert">
-                            <i class="fas fa-exclamation-triangle"></i>&nbsp; &nbsp; &nbsp; All successful applicants will engage in a capacity needs
-                            assessment and may receive follow up capacity buildig technical 
-                            and financial support as needed.
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 id="MonitoringandEvaluationSummary" class="panel-title"><i class="fas fa-clipboard-check" style="margin-right:10px;"></i>Monitoring and Evaluation Summary</h4>
                         </div>
-                        <br />
-                        <p>
-                            From the list below, in which areas do you need capacity building 
-                            support in order to achieve your organisation's/project objectives?
-                        </p>
-                        <br />
-                        <table class="table table-condensed table-responsive">
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.SystemsDevelopment)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.SystemsDevelopment)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.GovernanceStrengthening)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.GovernanceStrengthening)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.OrganisationalStepChange)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.OrganisationalStepChange)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.Fundraising)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.Fundraising)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.HRandStaffing)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.HRandStaffing)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.FinancialManagement)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.FinancialManagement)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.MonitoringLearningAndEvaluation)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.MonitoringLearningAndEvaluation)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.MarketingAndCommunication)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.MarketingAndCommunication)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.CapacityNeedsSummary.CommunityOutreachAndNetworking)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.CapacityNeedsSummary.CommunityOutreachAndNetworking)</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="panel-footer">
-                        <span class="pull-left">
-                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
-                            <a data-toggle="collapse"
-                               href="#collapseCapacityNeedsSummary"
-                               aria-expanded="false"
-                               aria-controls="collapseCapacityNeedsSummary">
-                                Add note
-                            </a>
-                        </span>
-                        <div class="clearfix"></div>
-                        <div class="collapse" id="collapseCapacityNeedsSummary">
-                            @*<form class="form-horizontal"
-                                  id="capacityNeedsSummaryNote"
-                                  name="capacityNeedsSummaryNote"
-                                  style="padding-top: 10px;">*@
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
-                                    </div>
-                                </div>
-                            @*</form>*@
+                        <div class="panel-body">
+                            <dl>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.MandESummary.Methodology)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.MandESummary.Methodology)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.MandESummary.Responsibilities)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.MandESummary.Responsibilities)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.MandESummary.KeyLearnings)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.MandESummary.KeyLearnings)
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="panel-footer">
+                            <span class="pull-left">
+                                <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                                <a data-toggle="collapse"
+                                   href="#collapseMandESummary"
+                                   aria-expanded="false"
+                                   aria-controls="collapseMandESummary">
+                                    Add note
+                                </a>
+                            </span>
+                            <div class="clearfix"></div>
+                            <div class="collapse" id="collapseMandESummary">
+                                <br />
+                                <textarea class="form-control" id="mandESummaryNote" name="mandESummaryNote" rows="3" placeholder="Add new query"></textarea>
+                                <br />
+                                <a class="btn btn-success" id="btnMandESummaryNote" href="#MonitoringandEvaluationSummary" role="button" onclick="AddNote(7, '#mandESummaryNote')">Add note ...</a>  
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fas fa-glasses" style="margin-right:10px;"></i>Risk Assessment Summary</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>
-                            What are the key risks associated with this proposal (dynamics or events
-                            that could lead to failure, undermine the gains or become threats)? How 
-                            do you intend to prevent or respond to them?
-                        </p>
-                        <br />
-                        <table class="table table-bordered table-condensed table-responsive table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Type</th>
-                                    <th>Potential Risks</th>
-                                    <th>Probability</th>
-                                    <th>Risk Mitigation Measures</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Financial</td>
-                                    <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.FinancialRisks)</td>
-                                    <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.FinancialRiskProbability)</td>
-                                    <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.FinancialRiskMitigationMeasures)</td>                                    
-                                </tr>
-                                <tr>
-                                    <td>Legal</td>
-                                    <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.LegalRisks)</td>
-                                    <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.LegalRiskProbability)</td>
-                                    <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.LegalRiskMitigationMeasures)</td>
-                                </tr>
-                                <tr>
-                                    <td>Political</td>
-                                    <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.PoliticalRisks)</td>
-                                    <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.PoliticalRiskProbability)</td>
-                                    <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.PoliticalRiskMitigationMeasures)</td>
-                                </tr>
-                                <tr>
-                                    <td>Tech. &amp; Systems</td>
-                                    <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.TechSystemsRisks)</td>
-                                    <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.TechSystemsRiskProbability)</td>
-                                    <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.TechSystemsRiskMitigationMeasures)</td>
-                                </tr>
-                                <tr>
-                                    <td>Human Resources</td>
-                                    <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.HumanResourcesRisks)</td>
-                                    <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.HumanResourcesRiskProbability)</td>
-                                    <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.HumanResourcesRiskMitigationMeasures)</td>
-                                </tr>
-                                <tr>
-                                    <td>Reputation</td>
-                                    <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.ReputationRisks)</td>
-                                    <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.ReputationRiskProbability)</td>
-                                    <td>@Html.DisplayFor(model => model.RiskAssessmentSummary.ReputationRiskMitigationMeasures)</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-
-                        @*<dl class="dl-horizontal">
-                            <dt>
-                                @Html.DisplayNameFor(model => model.RiskAssessmentSummary.FinancialRisks)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.RiskAssessmentSummary.FinancialRisks)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.RiskAssessmentSummary.FinancialRiskProbability)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.RiskAssessmentSummary.FinancialRiskProbability)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.RiskAssessmentSummary.FinancialRiskMitigationMeasures)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.RiskAssessmentSummary.FinancialRiskMitigationMeasures)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.RiskAssessmentSummary.LegalRisks)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.RiskAssessmentSummary.LegalRisks)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.RiskAssessmentSummary.LegalRiskProbability)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.RiskAssessmentSummary.LegalRiskProbability)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.RiskAssessmentSummary.LegalRiskMitigationMeasures)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.RiskAssessmentSummary.LegalRiskMitigationMeasures)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.RiskAssessmentSummary.PoliticalRisks)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.RiskAssessmentSummary.PoliticalRisks)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.RiskAssessmentSummary.PoliticalRiskProbability)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.RiskAssessmentSummary.PoliticalRiskProbability)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.RiskAssessmentSummary.PoliticalRiskMitigationMeasures)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.RiskAssessmentSummary.PoliticalRiskMitigationMeasures)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.RiskAssessmentSummary.TechSystemsRisks)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.RiskAssessmentSummary.TechSystemsRisks)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.RiskAssessmentSummary.TechSystemsRiskProbability)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.RiskAssessmentSummary.TechSystemsRiskProbability)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.RiskAssessmentSummary.TechSystemsRiskMitigationMeasures)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.RiskAssessmentSummary.TechSystemsRiskMitigationMeasures)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.RiskAssessmentSummary.HumanResourcesRisks)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.RiskAssessmentSummary.HumanResourcesRisks)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.RiskAssessmentSummary.HumanResourcesRiskProbability)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.RiskAssessmentSummary.HumanResourcesRiskProbability)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.RiskAssessmentSummary.HumanResourcesRiskMitigationMeasures)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.RiskAssessmentSummary.HumanResourcesRiskMitigationMeasures)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.RiskAssessmentSummary.ReputationRisks)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.RiskAssessmentSummary.ReputationRisks)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.RiskAssessmentSummary.ReputationRiskProbability)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.RiskAssessmentSummary.ReputationRiskProbability)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.RiskAssessmentSummary.ReputationRiskMitigationMeasures)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.RiskAssessmentSummary.ReputationRiskMitigationMeasures)
-                            </dd>
-
-                        </dl>*@
-                    </div>
-                    <div class="panel-footer">
-                        <span class="pull-left">
-                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
-                            <a data-toggle="collapse"
-                               href="#collapseRiskAssessmentSummary"
-                               aria-expanded="false"
-                               aria-controls="collapseRiskAssessmentSummary">
-                                Add note
-                            </a>
-                        </span>
-                        <div class="clearfix"></div>
-                        <div class="collapse" id="collapseRiskAssessmentSummary">
-                            @*<form class="form-horizontal"
-                                  id="riskAssessmentSummaryNote"
-                                  name="riskAssessmentSummaryNote"
-                                  style="padding-top: 10px;">*@
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
-                                    </div>
-                                </div>
-                            @*</form>*@
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 id="FinancialInformationSummary" class="panel-title"><i class="fas fa-money-check-alt" style="margin-right:10px;"></i>Financial Information Summary</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                How much money are you applying for? Please indicate how much you 
+                                are requesting per year.
+                            </p>
+                            <br />
+                            <table class="table table-bordered table-condensed table-responsive table-striped">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Amount requested (in USD)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Year 1</td>
+                                        <td>@Html.DisplayFor(model => model.FinancialInfoSummary.Year1)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Year 2 <em>(if applicable)</em></td>
+                                        <td>@Html.DisplayFor(model => model.FinancialInfoSummary.Year2)</td>
+                                    </tr>
+                                    <tr class="info">
+                                        <td><strong>Grant Total</strong></td>
+                                        <td><strong>@Html.DisplayFor(model => model.FinancialInfoSummary.Total)</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="panel-footer">
+                            <span class="pull-left">
+                                <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                                <a data-toggle="collapse"
+                                   href="#collapseFinancialInformationSummary"
+                                   aria-expanded="false"
+                                   aria-controls="collapseFinancialInformationSummary">
+                                    Add note
+                                </a>
+                            </span>
+                            <div class="clearfix"></div>
+                            <div class="collapse" id="collapseFinancialInformationSummary">
+                                <br />
+                                <textarea class="form-control" id="financialInformationSummaryNote" name="financialInformationSummaryNote" rows="3" placeholder="Add new query"></textarea>
+                                <br />
+                                <a class="btn btn-success" id="btnFinancialInformationSummaryNote" href="#FinancialInformationSummary" role="button" onclick="AddNote(8, '#financialInformationSummaryNote')">Add note ...</a> 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fas fa-clipboard-check" style="margin-right:10px;"></i>Monitoring and Evaluation Summary</h4>
-                    </div>
-                    <div class="panel-body">
-                        <dl>
-                            <dt>
-                                @Html.DisplayNameFor(model => model.MandESummary.Methodology)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.MandESummary.Methodology)
-                            </dd>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 id="GovernanceAndHumanResources" class="panel-title"><i class="fas fa-id-card-alt" style="margin-right:10px;"></i>Governance and Human Resources</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                Please complete the following table with information about your board.
+                            </p>
+                            <br />
+                            <table class="table table-bordered table-condensed table-responsive table-striped">
+                                <tr>
+                                    <td colspan="8"><h4 class="text-center"><strong>Board</strong></h4></td>
+                                </tr>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Board Position</th>
+                                    <th>Gender</th>
+                                    <th>Address</th>
+                                    <th>Affiliated Org</th>
+                                    <th>Designation</th>
+                                    <th>Board Term (yrs)</th>
+                                </tr>
 
-                            <dt>
-                                @Html.DisplayNameFor(model => model.MandESummary.Responsibilities)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.MandESummary.Responsibilities)
-                            </dd>
+                                @foreach (var item in Model.BoardSummary)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.BoardPosition)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Gender)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.AffiliatedOrg)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Designation)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.BoardTerm)</td>
+                                    </tr>
+                                }
+                            </table>
+                            <br />
+                            <p>
+                                Please complete the following table with information on your 
+                                senior and management staff.
+                            </p>
+                            <br />
+                            <table class="table table-bordered table-condensed table-responsive table-striped">
+                                <tr>
+                                    <td colspan="5"><h4 class="text-center"><strong>Staff</strong></h4></td>
+                                </tr>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Gender</th>
+                                    <th>Job Title</th>
+                                    <th>Contract Type</th>
+                                </tr>
 
-                            <dt>
-                                @Html.DisplayNameFor(model => model.MandESummary.KeyLearnings)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.MandESummary.KeyLearnings)
-                            </dd>
-                        </dl>
-                    </div>
-                    <div class="panel-footer">
-                        <span class="pull-left">
-                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
-                            <a data-toggle="collapse"
-                               href="#collapseMandESummary"
-                               aria-expanded="false"
-                               aria-controls="collapseMandESummary">
-                                Add note
-                            </a>
-                        </span>
-                        <div class="clearfix"></div>
-                        <div class="collapse" id="collapseMandESummary">
-                            @*<form class="form-horizontal"
-                                  id="mandESummaryNote"
-                                  name="mandESummaryNote"
-                                  style="padding-top: 10px;">*@
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
-                                    </div>
-                                </div>
-                            @*</form>*@
+                                @foreach (var item in Model.StaffSummary)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Gender)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.JobTitle)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.ContractType)</td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                        <div class="panel-footer">
+                            <span class="pull-left">
+                                <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                                <a data-toggle="collapse"
+                                   href="#collapseGovernanceAndHRSummary"
+                                   aria-expanded="false"
+                                   aria-controls="collapseGovernanceAndHRSummary">
+                                    Add note
+                                </a>
+                            </span>
+                            <div class="clearfix"></div>
+                            <div class="collapse" id="collapseGovernanceAndHRSummary">
+                                <br />
+                                <textarea class="form-control" id="governanceAndHRSummaryNote" name="governanceAndHRSummaryNote" rows="3" placeholder="Add new query"></textarea>
+                                <br />
+                                <a class="btn btn-success" id="btnGovernanceAndHRSummaryNote" href="#GovernanceAndHumanResources" role="button" onclick="AddNote(9, '#governanceAndHRSummaryNote')">Add note ...</a> 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fas fa-money-check-alt" style="margin-right:10px;"></i>Financial Information Summary</h4>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4>Financial Assessment</h4>
+                    <p>
+                        <em>To be completed by the Accounts Officer or Person responsible for financial management.</em>
+                    </p>
+                    <br />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">                        
+                            <h4 id="AccountingRecordsSummary" class="panel-title"><i class="fas fa-book" style="margin-right:10px;"></i>Accounting Records Summary</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>Please select which of the following basic accounting records you keep.</p>
+                            <br />
+                            <table class="table table-condensed table-responsive">
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.Cashbook)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.Cashbook)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.PettyCashbook)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.PettyCashbook)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.ExpendituresFile)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.ExpendituresFile)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.IncomingFundsFile)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.IncomingFundsFile)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.BankAccountFile)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.BankAccountFile)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.FixedAssetRegister)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.FixedAssetRegister)</td>
+                                </tr>
+                            </table>
+                            <p>Please select which of the following additional accounting records you keep.</p>
+                            <br />
+                            <table class="table table-condensed table-responsive">
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.PayrollRecords)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.PayrollRecords)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.GeneralLedgerNominalLedger)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.GeneralLedgerNominalLedger)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.AccountsPayablePurchaseLedger)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.AccountsPayablePurchaseLedger)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.AccountsReceivableSalesLedger)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.AccountsReceivableSalesLedger)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.AdditionalAccountingRecords)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.AdditionalAccountingRecords)</td>
+                                </tr>
+                            </table>
+
+                            <dl>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.AccountingRecordsSummary.FinStatementsApproved)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.AccountingRecordsSummary.FinStatementsApproved)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.AccountingRecordsSummary.FSADate)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.AccountingRecordsSummary.FSADate)
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="panel-footer">
+                            <span class="pull-left">
+                                <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                                <a data-toggle="collapse"
+                                   href="#collapseAccountingRecordsSummary"
+                                   aria-expanded="false"
+                                   aria-controls="collapseAccountingRecordsSummary">
+                                    Add note
+                                </a>
+                            </span>
+                            <div class="clearfix"></div>
+                            <div class="collapse" id="collapseAccountingRecordsSummary">
+                                <br />
+                                <textarea class="form-control" id="accountingRecordsSummaryNote" name="accountingRecordsSummaryNote" rows="3" placeholder="Add new query"></textarea>
+                                <br />
+                                <a class="btn btn-success" id="btnAccountingRecordsSummaryNote" href="#AccountingRecordsSummary" role="button" onclick="AddNote(10, '#accountingRecordsSummaryNote')">Add note ...</a> 
+                            </div>
+                        </div>
                     </div>
-                    <div class="panel-body">
-                        <p>
-                            How much money are you applying for? Please indicate how much you 
-                            are requesting per year.
-                        </p>
-                        <br />
-                        <table class="table table-bordered table-condensed table-responsive table-striped">
-                            <thead>
+                </div>
+            </div>        
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 id="InternalControlsSummary" class="panel-title"><i class="fas fa-briefcase" style="margin-right:10px;"></i>Internal Controls Summary</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                Please select which of the following controls over purchases
+                                applies to your organisation.
+                            </p>
+                            <br />
+                            <table class="table table-condensed table-responsive">
                                 <tr>
-                                    <th></th>
-                                    <th>Amount requested (in USD)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Year 1</td>
-                                    <td>@Html.DisplayFor(model => model.FinancialInfoSummary.Year1)</td>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.SupportingDocumentationForExpenditure)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.SupportingDocumentationForExpenditure)</td>
                                 </tr>
                                 <tr>
-                                    <td>Year 2 <em>(if applicable)</em></td>
-                                    <td>@Html.DisplayFor(model => model.FinancialInfoSummary.Year2)</td>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ExpenditureAuthorisedUsingPaymentVoucher)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ExpenditureAuthorisedUsingPaymentVoucher)</td>
                                 </tr>
-                                <tr class="info">
-                                    <td><strong>Grant Total</strong></td>
-                                    <td><strong>@Html.DisplayFor(model => model.FinancialInfoSummary.Total)</strong></td>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.InvoicesCheckedAgainstOrders)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.InvoicesCheckedAgainstOrders)</td>
                                 </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="panel-footer">
-                        <span class="pull-left">
-                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
-                            <a data-toggle="collapse"
-                               href="#collapseFinancialInformationSummary"
-                               aria-expanded="false"
-                               aria-controls="collapseFinancialInformationSummary">
-                                Add note
-                            </a>
-                        </span>
-                        <div class="clearfix"></div>
-                        <div class="collapse" id="collapseFinancialInformationSummary">
-                            @*<form class="form-horizontal"
-                                  id="financialInformationSummaryNote"
-                                  name="financialInformationSummaryNote"
-                                  style="padding-top: 10px;">*@
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
-                                    </div>
-                                </div>
-                            @*</form>*@
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.RecordsOfOrdersPlace)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.RecordsOfOrdersPlace)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.QualityAndQuantityChecked)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.QualityAndQuantityChecked)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.PaymentsMadeAgainstOriginalInvoices)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.PaymentsMadeAgainstOriginalInvoices)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.RegularStockTakingUndertaken)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.RegularStockTakingUndertaken)</td>
+                                </tr>
+                            </table>
+                            <br />
+                            <p>
+                                Select which of the following controls over payments by
+                                cheque are followed by your organisation.
+                            </p>
+                            <table class="table table-condensed table-responsive">
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ConditionsForChequesComplied)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ConditionsForChequesComplied)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.MultipeignatoriesOnBankMandate)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.MultipeignatoriesOnBankMandate)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ChequeExpenditureNoted)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ChequeExpenditureNoted)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ChequeStubsCompleted)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ChequeStubsCompleted)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ChequesSignedWithDocumentaryEvidence)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ChequesSignedWithDocumentaryEvidence)</td>
+                                </tr>
+                            </table>
+                            <br />
+                            <p>
+                                Select which of the following controls over payments by
+                                petty cash are followed by your organisation.
+                            </p>
+                            <table class="table table-condensed table-responsive">
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.PettyCashPaymentsHaveDocumentation)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.PettyCashPaymentsHaveDocumentation)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.SupportingDocumentationAuthorised)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.SupportingDocumentationAuthorised)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ClaimAmountsEntered)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ClaimAmountsEntered)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.PaymentsNotedInPettyCashBook)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.PaymentsNotedInPettyCashBook)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ToppingUpWithdrawalsNotedInPettyCashBook)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ToppingUpWithdrawalsNotedInPettyCashBook)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.RegularChecksOfPettyCashRecords)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.RegularChecksOfPettyCashRecords)</td>
+                                </tr>
+                            </table>
+                            <br />
+                            <p>
+                                Select which of the following controls over bank
+                                accounts are complied with.
+                            </p>
+                            <table class="table table-condensed table-responsive">
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.BankBccountsHeldInNameOfOrganisation)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.BankBccountsHeldInNameOfOrganisation)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.InstructionsToOpenCloseAccountsAuthorised)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.InstructionsToOpenCloseAccountsAuthorised)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.SecureRecordsHeld)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.SecureRecordsHeld)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.RegularBankReconciliationsPerformed)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.RegularBankReconciliationsPerformed)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.BankStatementsInspected)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.BankStatementsInspected)</td>
+                                </tr>
+                            </table>
+                            <br />
+                            <p>
+                                Do you have the following controls for employee payroll
+                                management?
+                            </p>
+                            <table class="table table-condensed table-responsive">
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.SalaryLevelsAuthorised)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.SalaryLevelsAuthorised)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.StaffEmployedUnderContract)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.StaffEmployedUnderContract)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ComplianceWithStatutoryTaxRegulations)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ComplianceWithStatutoryTaxRegulations)</td>
+                                </tr>
+                            </table>
+                            <br />
+                            <p>
+                                If the organisation owns fixed assets (vehicles, office
+                                equipment, etc. )
+                            </p>
+                            <table class="table table-condensed table-responsive">
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.AssetsCheckedRegularly)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.AssetsCheckedRegularly)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.InsuranceCover)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.InsuranceCover)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.UseOfFixedAssetsReviewed)</td>
+                                    <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.UseOfFixedAssetsReviewed)</td>
+                                </tr>
+
+                            </table>
+                            <br />
+                            <dl>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.InternalControlsSummary.ProduceFinancialStatements)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.InternalControlsSummary.ProduceFinancialStatements)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.InternalControlsSummary.PeriodRecentStatements)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.InternalControlsSummary.PeriodRecentStatements) month(s)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.InternalControlsSummary.ReceiversOfFinancialStatements)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.InternalControlsSummary.ReceiversOfFinancialStatements)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.InternalControlsSummary.AnnualFinancialStatementsAudited)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.InternalControlsSummary.AnnualFinancialStatementsAudited)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.InternalControlsSummary.LastExternalAudit)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.InternalControlsSummary.LastExternalAudit)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.InternalControlsSummary.LastExternalAuditDate)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.InternalControlsSummary.LastExternalAuditDate)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.InternalControlsSummary.FinancialReportsForManagers)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.InternalControlsSummary.FinancialReportsForManagers)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.InternalControlsSummary.ManagerReportFrequency)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.InternalControlsSummary.ManagerReportFrequency) month(s)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.InternalControlsSummary.ManagerReportCoveragePeriod)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.InternalControlsSummary.ManagerReportCoveragePeriod) month(s)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.InternalControlsSummary.ManagerReportCreator)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.InternalControlsSummary.ManagerReportCreator)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.InternalControlsSummary.PeriodicReportsForDonors)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.InternalControlsSummary.PeriodicReportsForDonors)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.InternalControlsSummary.DonorReportFrequency)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.InternalControlsSummary.DonorReportFrequency) month(s)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.InternalControlsSummary.DonorReportCreator)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.InternalControlsSummary.DonorReportCreator)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.InternalControlsSummary.DonorReportReceivers)
+                                </dt>
+                                <dd style="padding-bottom:8px;">
+                                    @Html.DisplayFor(model => model.InternalControlsSummary.DonorReportReceivers)
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="panel-footer">
+                            <span class="pull-left">
+                                <i class="fas fa-plus"></i>&nbsp; &nbsp;
+                                <a data-toggle="collapse"
+                                   href="#collapseInternalControlsSummary"
+                                   aria-expanded="false"
+                                   aria-controls="collapseInternalControlsSummary">
+                                    Add note
+                                </a>
+                            </span>
+                            <div class="clearfix"></div>
+                            <div class="collapse" id="collapseInternalControlsSummary">
+                                <br />
+                                <textarea class="form-control" id="internalControlsSummaryNote" name="internalControlsSummaryNote" rows="3" placeholder="Add new query"></textarea>
+                                <br />
+                                <a class="btn btn-success" id="btnInternalControlsSummaryNote" href="#InternalControlsSummary" role="button" onclick="AddNote(11, '#internalControlsSummaryNote')">Add note ...</a> 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fas fa-id-card-alt" style="margin-right:10px;"></i>Governance and Human Resources</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>
-                            Please complete the following table with information about your board.
-                        </p>
-                        <br />
-                        <table class="table table-bordered table-condensed table-responsive table-striped">
-                            <tr>
-                                <td colspan="8"><h4 class="text-center"><strong>Board</strong></h4></td>
-                            </tr>
-                            <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Board Position</th>
-                                <th>Gender</th>
-                                <th>Address</th>
-                                <th>Affiliated Org</th>
-                                <th>Designation</th>
-                                <th>Board Term (yrs)</th>
-                            </tr>
 
-                            @foreach (var item in Model.BoardSummary)
-                            {
-                                <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.LastName)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.BoardPosition)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Gender)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Address)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.AffiliatedOrg)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Designation)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.BoardTerm)</td>
-                                </tr>
-                            }
-                        </table>
-                        <br />
-                        <p>
-                            Please complete the following table with information on your 
-                            senior and management staff.
-                        </p>
-                        <br />
-                        <table class="table table-bordered table-condensed table-responsive table-striped">
-                            <tr>
-                                <td colspan="5"><h4 class="text-center"><strong>Staff</strong></h4></td>
-                            </tr>
-                            <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Gender</th>
-                                <th>Job Title</th>
-                                <th>Contract Type</th>
-                            </tr>
+            <!-- Hidden control to store serialized grant note data -->
+            @{
+                string grantNotesJson = JsonConvert.SerializeObject(new List<SectionNote>());
+            }
 
-                            @foreach (var item in Model.StaffSummary)
-                            {
-                                <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.LastName)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Gender)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.JobTitle)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.ContractType)</td>
-                                </tr>
-                            }
-                        </table>
-                    </div>
-                    <div class="panel-footer">
-                        <span class="pull-left">
-                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
-                            <a data-toggle="collapse"
-                               href="#collapseGovernanceAndHRSummary"
-                               aria-expanded="false"
-                               aria-controls="collapseGovernanceAndHRSummary">
-                                Add note
-                            </a>
-                        </span>
-                        <div class="clearfix"></div>
-                        <div class="collapse" id="collapseGovernanceAndHRSummary">
-                            @*<form class="form-horizontal"
-                                  id="governanceAndHRSummaryNote"
-                                  name="governanceAndHRSummaryNote"
-                                  style="padding-top: 10px;">*@
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
-                                    </div>
-                                </div>
-                            @*</form>*@
-                        </div>
-                    </div>
+            @Html.Hidden("grantNotesJson", grantNotesJson)
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                        <input class="btn btn-primary" type="submit" name="btnSubmitNotes" id="btnSubmitNotes" value='Submit' />
+                    </p>
+                    <p>
+                        @Html.ActionLink("Back to Dashboard", "Index")
+                    </p>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <h4>Financial Assessment</h4>
-                <p>
-                    <em>To be completed by the Accounts Officer or Person responsible for financial management.</em>
-                </p>
-                <br />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading">                        
-                        <h4 class="panel-title"><i class="fas fa-book" style="margin-right:10px;"></i>Accounting Records Summary</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Please select which of the following basic accounting records you keep.</p>
-                        <br />
-                        <table class="table table-condensed table-responsive">
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.Cashbook)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.Cashbook)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.PettyCashbook)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.PettyCashbook)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.ExpendituresFile)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.ExpendituresFile)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.IncomingFundsFile)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.IncomingFundsFile)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.BankAccountFile)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.BankAccountFile)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.FixedAssetRegister)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.FixedAssetRegister)</td>
-                            </tr>
-                        </table>
-                        <p>Please select which of the following additional accounting records you keep.</p>
-                        <br />
-                        <table class="table table-condensed table-responsive">
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.PayrollRecords)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.PayrollRecords)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.GeneralLedgerNominalLedger)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.GeneralLedgerNominalLedger)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.AccountsPayablePurchaseLedger)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.AccountsPayablePurchaseLedger)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.AccountsReceivableSalesLedger)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.AccountsReceivableSalesLedger)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.AccountingRecordsSummary.AdditionalAccountingRecords)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.AccountingRecordsSummary.AdditionalAccountingRecords)</td>
-                            </tr>
-                        </table>
-
-                        <dl>
-                            <dt>
-                                @Html.DisplayNameFor(model => model.AccountingRecordsSummary.FinStatementsApproved)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.AccountingRecordsSummary.FinStatementsApproved)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.AccountingRecordsSummary.FSADate)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.AccountingRecordsSummary.FSADate)
-                            </dd>
-                        </dl>
-                    </div>
-                    <div class="panel-footer">
-                        <span class="pull-left">
-                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
-                            <a data-toggle="collapse"
-                               href="#collapseAccountingRecordsSummary"
-                               aria-expanded="false"
-                               aria-controls="collapseAccountingRecordsSummary">
-                                Add note
-                            </a>
-                        </span>
-                        <div class="clearfix"></div>
-                        <div class="collapse" id="collapseAccountingRecordsSummary">
-                            @*<form class="form-horizontal"
-                                  id="accountingRecordsSummaryNote"
-                                  name="accountingRecordsSummaryNote"
-                                  style="padding-top: 10px;">*@
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
-                                    </div>
-                                </div>
-                            @*</form>*@
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>        
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fas fa-briefcase" style="margin-right:10px;"></i>Internal Controls Summary</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>
-                            Please select which of the following controls over purchases
-                            applies to your organisation.
-                        </p>
-                        <br />
-                        <table class="table table-condensed table-responsive">
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.SupportingDocumentationForExpenditure)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.SupportingDocumentationForExpenditure)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ExpenditureAuthorisedUsingPaymentVoucher)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ExpenditureAuthorisedUsingPaymentVoucher)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.InvoicesCheckedAgainstOrders)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.InvoicesCheckedAgainstOrders)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.RecordsOfOrdersPlace)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.RecordsOfOrdersPlace)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.QualityAndQuantityChecked)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.QualityAndQuantityChecked)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.PaymentsMadeAgainstOriginalInvoices)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.PaymentsMadeAgainstOriginalInvoices)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.RegularStockTakingUndertaken)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.RegularStockTakingUndertaken)</td>
-                            </tr>
-                        </table>
-                        <br />
-                        <p>
-                            Select which of the following controls over payments by
-                            cheque are followed by your organisation.
-                        </p>
-                        <table class="table table-condensed table-responsive">
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ConditionsForChequesComplied)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ConditionsForChequesComplied)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.MultipeignatoriesOnBankMandate)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.MultipeignatoriesOnBankMandate)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ChequeExpenditureNoted)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ChequeExpenditureNoted)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ChequeStubsCompleted)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ChequeStubsCompleted)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ChequesSignedWithDocumentaryEvidence)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ChequesSignedWithDocumentaryEvidence)</td>
-                            </tr>
-                        </table>
-                        <br />
-                        <p>
-                            Select which of the following controls over payments by
-                            petty cash are followed by your organisation.
-                        </p>
-                        <table class="table table-condensed table-responsive">
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.PettyCashPaymentsHaveDocumentation)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.PettyCashPaymentsHaveDocumentation)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.SupportingDocumentationAuthorised)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.SupportingDocumentationAuthorised)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ClaimAmountsEntered)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ClaimAmountsEntered)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.PaymentsNotedInPettyCashBook)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.PaymentsNotedInPettyCashBook)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ToppingUpWithdrawalsNotedInPettyCashBook)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ToppingUpWithdrawalsNotedInPettyCashBook)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.RegularChecksOfPettyCashRecords)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.RegularChecksOfPettyCashRecords)</td>
-                            </tr>
-                        </table>
-                        <br />
-                        <p>
-                            Select which of the following controls over bank
-                            accounts are complied with.
-                        </p>
-                        <table class="table table-condensed table-responsive">
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.BankBccountsHeldInNameOfOrganisation)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.BankBccountsHeldInNameOfOrganisation)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.InstructionsToOpenCloseAccountsAuthorised)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.InstructionsToOpenCloseAccountsAuthorised)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.SecureRecordsHeld)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.SecureRecordsHeld)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.RegularBankReconciliationsPerformed)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.RegularBankReconciliationsPerformed)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.BankStatementsInspected)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.BankStatementsInspected)</td>
-                            </tr>
-                        </table>
-                        <br />
-                        <p>
-                            Do you have the following controls for employee payroll
-                            management?
-                        </p>
-                        <table class="table table-condensed table-responsive">
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.SalaryLevelsAuthorised)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.SalaryLevelsAuthorised)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.StaffEmployedUnderContract)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.StaffEmployedUnderContract)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.ComplianceWithStatutoryTaxRegulations)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.ComplianceWithStatutoryTaxRegulations)</td>
-                            </tr>
-                        </table>
-                        <br />
-                        <p>
-                            If the organisation owns fixed assets (vehicles, office
-                            equipment, etc. )
-                        </p>
-                        <table class="table table-condensed table-responsive">
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.AssetsCheckedRegularly)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.AssetsCheckedRegularly)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.InsuranceCover)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.InsuranceCover)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayNameFor(model => model.InternalControlsSummary.UseOfFixedAssetsReviewed)</td>
-                                <td class="col-md-1 text-center">@Html.DisplayFor(model => model.InternalControlsSummary.UseOfFixedAssetsReviewed)</td>
-                            </tr>
-
-                        </table>
-                        <br />
-                        <dl>
-                            <dt>
-                                @Html.DisplayNameFor(model => model.InternalControlsSummary.ProduceFinancialStatements)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.InternalControlsSummary.ProduceFinancialStatements)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.InternalControlsSummary.PeriodRecentStatements)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.InternalControlsSummary.PeriodRecentStatements) month(s)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.InternalControlsSummary.ReceiversOfFinancialStatements)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.InternalControlsSummary.ReceiversOfFinancialStatements)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.InternalControlsSummary.AnnualFinancialStatementsAudited)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.InternalControlsSummary.AnnualFinancialStatementsAudited)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.InternalControlsSummary.LastExternalAudit)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.InternalControlsSummary.LastExternalAudit)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.InternalControlsSummary.LastExternalAuditDate)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.InternalControlsSummary.LastExternalAuditDate)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.InternalControlsSummary.FinancialReportsForManagers)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.InternalControlsSummary.FinancialReportsForManagers)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.InternalControlsSummary.ManagerReportFrequency)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.InternalControlsSummary.ManagerReportFrequency) month(s)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.InternalControlsSummary.ManagerReportCoveragePeriod)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.InternalControlsSummary.ManagerReportCoveragePeriod) month(s)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.InternalControlsSummary.ManagerReportCreator)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.InternalControlsSummary.ManagerReportCreator)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.InternalControlsSummary.PeriodicReportsForDonors)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.InternalControlsSummary.PeriodicReportsForDonors)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.InternalControlsSummary.DonorReportFrequency)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.InternalControlsSummary.DonorReportFrequency) month(s)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.InternalControlsSummary.DonorReportCreator)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.InternalControlsSummary.DonorReportCreator)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.InternalControlsSummary.DonorReportReceivers)
-                            </dt>
-                            <dd style="padding-bottom:8px;">
-                                @Html.DisplayFor(model => model.InternalControlsSummary.DonorReportReceivers)
-                            </dd>
-                        </dl>
-                    </div>
-                    <div class="panel-footer">
-                        <span class="pull-left">
-                            <i class="fas fa-plus"></i>&nbsp; &nbsp;
-                            <a data-toggle="collapse"
-                               href="#collapseInternalControlsSummary"
-                               aria-expanded="false"
-                               aria-controls="collapseInternalControlsSummary">
-                                Add note
-                            </a>
-                        </span>
-                        <div class="clearfix"></div>
-                        <div class="collapse" id="collapseInternalControlsSummary">
-                            @*<form class="form-horizontal"
-                                  id="internalControlsSummaryNote"
-                                  name="internalControlsSummaryNote"
-                                  style="padding-top: 10px;">*@
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        <textarea class="form-control" rows="3" placeholder="Add new query"></textarea>
-                                    </div>
-                                </div>
-                            @*</form>*@
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Hidden control to store serialized grant note data -->
-        @{
-            string grantNotesJson = JsonConvert.SerializeObject(new List<SectionNote>());
-        }
-
-        @Html.Hidden("grantNotesJson", grantNotesJson)
-
-
-        <div class="row">
-            <div class="col-lg-12">
-                <p>
-                    <input class="btn btn-primary" type="submit" name="btnSubmitNotes" id="btnSubmitNotes" value='Submit' />
-                </p>
-                <p>
-                    @Html.ActionLink("Back to Dashboard", "Index")
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
             
-@section scripts
-{
-    <script src="~/js/site.js"></script>
-}
+    @section scripts
+    {
+        <script src="~/js/site.js"></script>
+    }
 }
